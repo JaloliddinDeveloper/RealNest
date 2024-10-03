@@ -3,6 +3,9 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using RealNest.Web.Brokers.Storages;
+using RealNest.Web.Services.Foundations.Houses;
+using RealNest.Web.Services.Foundations.Pictures;
+using RealNest.Web.Services.Foundations.Users;
 
 public class Program
 {
@@ -12,6 +15,10 @@ public class Program
 
         builder.Services.AddControllersWithViews();
         builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+        builder.Services.AddTransient<IUserService,UserService>();
+        builder.Services.AddTransient<IHouseService, HouseService>();
+        builder.Services.AddTransient<IPictureService,PictureService>();
+
 
         var app = builder.Build();
 
