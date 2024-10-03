@@ -9,7 +9,7 @@ using RealNest.Web.Models.Foundations.Users;
 
 namespace RealNest.Web.Brokers.Storages
 {
-    public partial class StorageBroker:DbContext, IStorageBroker
+    public partial class StorageBroker : DbContext, IStorageBroker
     {
         private readonly IConfiguration configuration;
 
@@ -18,9 +18,40 @@ namespace RealNest.Web.Brokers.Storages
             this.configuration = configuration;
             Database.Migrate();
         }
+        private async ValueTask<T> InsertAsync<T>(T @object) where T : class
+        {
+            using var broker = new StorageBroker(this.configuration);
+            broker.Entry<T>(@object).State = EntityState.Added;
+            await broker.SaveChangesAsync();
+            return @object;
+        }
+        private IQueryable<T> SelectAll<T>() where T : class
+        {
+            using var broker = new StorageBroker(this.configuration);
+            return broker.Set<T>();    
+        }
+        private async ValueTask<T> SelectAsync<T>(params object[] objectIds) where T : class
+        {
+            using var broker = new StorageBroker(this.configuration);
+            return await FindAsync<T>(objectIds);
+        }
+        private async ValueTask<T> UpdateAsync<T>(T @object) where T : class
+        {
+            using var broker = new StorageBroker(this.configuration);
+            broker.Entry<T>(@object).State = EntityState.Modified;
+            await broker.SaveChangesAsync();
+            return @object;
+        }
+        private async ValueTask<T> DeleteAsync<T>(T @object) where T : class
+        {
+            using var broker = new StorageBroker(this.configuration);
+            broker.Entry<T>(@object).State = EntityState.Deleted;
+            await broker.SaveChangesAsync();
+            return @object;
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = 
+            string connectionString =
                 this.configuration.GetConnectionString("DefaultConnectionString");
 
             optionsBuilder.UseSqlServer(connectionString);
