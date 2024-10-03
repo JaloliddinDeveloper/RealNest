@@ -28,7 +28,7 @@ namespace RealNest.Web.Brokers.Storages
         private IQueryable<T> SelectAll<T>() where T : class
         {
             using var broker = new StorageBroker(this.configuration);
-            return broker.Set<T>();    
+            return broker.Set<T>();
         }
         private async ValueTask<T> SelectAsync<T>(params object[] objectIds) where T : class
         {
