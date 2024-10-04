@@ -7,10 +7,33 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RealNest.Web.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <style>
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            height: 70px;
+            width: auto;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .navbar-nav {
+            margin-left: 0;
+        }
+
+        .nav-item {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         .navbar-nav .nav-link {
             font-weight: bold;
-            font-size: 25px; /* Increased font size */
+            font-size: 25px;
             padding: 5px 10px;
             transition: background-color 0.3s, color 0.3s;
             border-radius: 5px;
@@ -21,12 +44,6 @@
                 color: white;
             }
 
-        .navbar {
-            background-color: #f8f9fa;
-            padding: 10px 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
         .navbar-toggler {
             border-color: #007bff;
         }
@@ -35,8 +52,47 @@
             background-color: #007bff;
         }
 
+        .search-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .form-control {
+            height: 45px;
+            width: 400px;
+            border-radius: 25px;
+            font-size: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dfe1e5;
+            padding-left: 45px;
+            transition: box-shadow 0.3s;
+            position: relative;
+        }
+
+            .form-control:focus {
+                outline: none;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #007bff;
+        }
+
         .btn-outline-success {
-            border-color: #007bff;
+            border-radius: 25px;
+            height: 45px;
+            font-size: 18px;
+            padding: 5px 20px;
+            margin-left: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #007bff;
             color: #007bff;
         }
 
@@ -45,20 +101,23 @@
                 color: white;
             }
 
-        .navbar-brand img {
-            height: 70px;
-            width: auto;
-            border-radius: 5px;
+        .profile-button {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .navbar-nav {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .dropdown-menu a {
-            font-size: 18px;
-        }
+            .profile-button:hover {
+                background: linear-gradient(45deg, #0056b3, #004080);
+                color: white;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
     </style>
 </head>
 <body>
@@ -73,8 +132,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
-                <ul class="navbar-nav">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
@@ -84,23 +143,25 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Rent">Rent</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <li><a class="dropdown-item" href="@Url.Action("Login", "Account")">Sign In</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("Register", "Account")">Sign Up</a></li>
-                        </ul>
+                </ul>
+
+                <div class="search-container">
+                    <form class="d-flex position-relative" role="search" asp-controller="Home" asp-action="Search">
+                        <span class="bi bi-search search-icon"></span>
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="profile-button" onclick="window.location.href='@Url.Action("Profile", "Account")'">Profile</button>
                     </li>
                 </ul>
-                <form class="d-flex" role="search" asp-controller="Home" asp-action="Search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -112,6 +173,7 @@
             &copy; 2024 - RealNest.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
