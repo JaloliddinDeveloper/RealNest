@@ -16,14 +16,14 @@ namespace RealNest.Web.Brokers.Storages
 
         public IQueryable<House> SelectAllHouses() =>
             SelectAll<House>();
-        
-        public async ValueTask<House> SelectHouseByIdAsync(int houseId)=>
+
+        public async ValueTask<House> SelectHouseByIdAsync(int houseId) =>
             await SelectAsync<House>(houseId);
 
-        public async ValueTask<House> UpdateHouseAsync(House house)=>
+        public async ValueTask<House> UpdateHouseAsync(House house) =>
             await UpdateAsync(house);
 
-        public async ValueTask<House> DeleteHouseAsync(House house)=>
+        public async ValueTask<House> DeleteHouseAsync(House house) =>
             await DeleteAsync(house);
     }
 }
