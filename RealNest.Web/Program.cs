@@ -14,11 +14,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
-        builder.Services.AddTransient<IStorageBroker, StorageBroker>();
-        builder.Services.AddTransient<IUserService,UserService>();
-        builder.Services.AddTransient<IHouseService, HouseService>();
-        builder.Services.AddTransient<IPictureService,PictureService>();
-
+        RegisterBrokers(builder);
+        RegisterFoundations(builder);
 
         var app = builder.Build();
 
@@ -38,5 +35,17 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.Run();
+    }
+
+    private static void RegisterBrokers(WebApplicationBuilder builder)
+    {
+        builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+    }
+
+    private static void RegisterFoundations(WebApplicationBuilder builder)
+    {
+        builder.Services.AddTransient<IUserService, UserService>();
+        builder.Services.AddTransient<IHouseService, HouseService>();
+        builder.Services.AddTransient<IPictureService, PictureService>();
     }
 }
