@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,15 +23,6 @@
             margin-right: 20px;
         }
 
-        .navbar-nav {
-            margin-left: 0;
-        }
-
-        .nav-item {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
         .navbar-nav .nav-link {
             font-weight: bold;
             font-size: 25px;
@@ -44,82 +36,93 @@
                 color: white;
             }
 
-        .navbar-toggler {
-            border-color: #007bff;
-        }
-
-        .navbar-toggler-icon {
-            background-color: #007bff;
-        }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .form-control {
-            height: 45px;
-            width: 400px;
+        .btn-outline-primary,
+        .btn-primary {
             border-radius: 25px;
+            padding: 10px 20px;
             font-size: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid #dfe1e5;
-            padding-left: 45px;
-            transition: box-shadow 0.3s;
-            position: relative;
+            font-weight: bold;
         }
 
-            .form-control:focus {
-                outline: none;
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            }
-
-        .search-icon {
-            position: absolute;
-            top: 50%;
-            left: 15px;
-            transform: translateY(-50%);
-            font-size: 20px;
+        .btn-outline-primary {
             color: #007bff;
-        }
-
-        .btn-outline-success {
-            border-radius: 25px;
-            height: 45px;
-            font-size: 18px;
-            padding: 5px 20px;
-            margin-left: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: 1px solid #007bff;
-            color: #007bff;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-            .btn-outline-success:hover {
+            .btn-outline-primary:hover {
                 background-color: #007bff;
                 color: white;
             }
 
-        .profile-button {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #007bff, #0056b3);
+        .btn-primary {
+            background-color: #007bff;
             color: white;
-            border: none;
-            border-radius: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-            .profile-button:hover {
-                background: linear-gradient(45deg, #0056b3, #004080);
-                color: white;
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            .btn-primary:hover {
+                background-color: #0056b3;
             }
+        .google-search-input {
+            height: 45px;
+            width: 400px; 
+            max-width: 100%; 
+            border-radius: 25px 0 0 25px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding-left: 20px;
+            font-size: 18px;
+            transition: border-color 0.2s;
+            margin-right: 0;
+        }
+
+            .google-search-input:focus {
+                border-color: #4285f4;
+                outline: none;
+                box-shadow: 0 1px 6px rgba(66, 133, 244, 0.3);
+            }
+
+        .google-search-btn {
+            height: 45px;
+            border-radius: 0 25px 25px 0;
+            font-size: 18px;
+            background-color: #4285f4;
+            color: white;
+            border: 1px solid #4285f4;
+            padding: 0 20px;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+
+            .google-search-btn:hover {
+                background-color: #357ae8;
+                box-shadow: 0 1px 6px rgba(66, 133, 244, 0.3);
+            }
+
+        .google-search-bar-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0; 
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-footer {
+            border-top: none;
+        }
+
+        .form-control {
+            border-radius: 25px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -127,8 +130,7 @@
                 <img src="~/images/converted_image.png" alt="RealNest Logo" />
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -144,18 +146,19 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Rent">Rent</a>
                     </li>
                 </ul>
-
-                <div class="search-container">
-                    <form class="d-flex position-relative" role="search" asp-controller="Home" asp-action="Search">
-                        <span class="bi bi-search search-icon"></span>
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="google-search-bar-wrapper">
+                    <form class="d-flex justify-content-center" role="search" asp-controller="Home" asp-action="Search" method="get">
+                        <input class="google-search-input" type="search" name="query" placeholder="Search" aria-label="Search" value="@Context.Request.Query["query"]">
+                        <button class="google-search-btn" type="submit">Search</button>
                     </form>
                 </div>
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <button class="profile-button" onclick="window.location.href='@Url.Action("Profile", "Account")'">Profile</button>
+                        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>
                     </li>
                 </ul>
             </div>
@@ -167,6 +170,60 @@
             @RenderBody()
         </main>
     </div>
+    <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form asp-action="SignUp" asp-controller="Account" method="post">
+                        <div class="mb-3">
+                            <label for="signUpUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="signUpUsername" name="Username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signUpEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signUpEmail" name="Email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signUpPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signUpPassword" name="Password" placeholder="Create a password" required>
+                        </div>
+                       
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -177,6 +234,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
+
+
+
+
+
+
+
