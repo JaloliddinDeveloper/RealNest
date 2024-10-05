@@ -6,15 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RealNest.Web.Models.ViewModels
 {
-    public class UserViewModel
+    public class RegisterViewModel
     {
-        public int UserId { get; set; }
-
-        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
-
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
