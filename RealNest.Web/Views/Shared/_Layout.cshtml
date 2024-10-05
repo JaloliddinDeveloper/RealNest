@@ -155,11 +155,16 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#signInModal">Sign In</button>
+                        <form asp-action="SignUp" asp-controller="Account" method="get" class="d-inline">
+                            <button type="submit" class="btn btn-outline-primary me-2">Sign Up</button>
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>
+                        <form asp-action="SignIn" asp-controller="Account" method="get" class="d-inline">
+                            <button type="submit" class="btn btn-outline-primary me-2">Sign In</button>
+                        </form>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -170,61 +175,6 @@
             @RenderBody()
         </main>
     </div>
-    <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="inputEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign In</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <form asp-action="SignUp" asp-controller="Account" method="post">
-                        <div class="mb-3">
-                            <label for="signUpUsername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="signUpUsername" name="Username" placeholder="Enter your username" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="signUpEmail" name="Email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="signUpPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="signUpPassword" name="Password" placeholder="Create a password" required>
-                        </div>
-                       
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - RealNest.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

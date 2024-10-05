@@ -18,5 +18,10 @@ namespace RealNest.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult CreateHouse()
+        {
+            return View();
+        }
     }
 }
