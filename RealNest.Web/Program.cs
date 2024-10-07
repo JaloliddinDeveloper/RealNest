@@ -2,7 +2,9 @@
 // Copyright (c) Coalition Of Good-Hearted Engineers
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
+using Microsoft.AspNetCore.Identity;
 using RealNest.Web.Brokers.Storages;
+using RealNest.Web.Models.Foundations.Users;
 using RealNest.Web.Services.Foundations.Houses;
 using RealNest.Web.Services.Foundations.Pictures;
 using RealNest.Web.Services.Foundations.Users;
@@ -14,6 +16,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
         RegisterBrokers(builder);
         RegisterFoundations(builder);
 
