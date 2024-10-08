@@ -13,5 +13,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<User> SelectUserByIdAsync(int userId);
         ValueTask<User> UpdateUserAsync(User user);
         ValueTask<User> DeleteUserAsync(User user);
+        ValueTask<User> SelectUserByEmailAsync(string email);
     }
 }

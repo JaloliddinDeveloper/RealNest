@@ -25,5 +25,10 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<User> DeleteUserAsync(User user)=>
             await DeleteAsync(user);
+        public async ValueTask<User> SelectUserByEmailAsync(string email)
+        {
+            using var broker = new StorageBroker(this.configuration);
+            return await broker.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }
