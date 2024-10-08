@@ -4,6 +4,8 @@
 //--------------------------------------------------
 using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Models.Foundations.Pictures;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealNest.Web.Brokers.Storages
 {

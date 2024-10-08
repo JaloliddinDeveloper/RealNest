@@ -5,6 +5,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using RealNest.Web.Models.Foundations.Houses;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealNest.Web.Models.Foundations.Users
