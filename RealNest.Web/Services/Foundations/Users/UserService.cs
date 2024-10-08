@@ -19,8 +19,8 @@ namespace RealNest.Web.Services.Foundations.Users
         public async ValueTask<User> AddUserAsync(User user) =>
             await this.storageBroker.InsertUserAsync(user);
 
-        public IQueryable<User> RetrieveAllUsers() =>
-            this.storageBroker.SelectAllUsers();
+        public async ValueTask<IQueryable<User>> RetrieveAllUsersAsync() =>
+           await this.storageBroker.SelectAllUsersAsync();
 
         public async ValueTask<User> RetrieveUserByIdAsync(int userId) =>
             await this.storageBroker.SelectUserByIdAsync(userId);

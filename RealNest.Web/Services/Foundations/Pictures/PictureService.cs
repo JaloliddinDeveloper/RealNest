@@ -19,8 +19,8 @@ namespace RealNest.Web.Services.Foundations.Pictures
         public async ValueTask<Picture> AddPictureAsync(Picture picture) =>
             await this.storageBroker.InsertPictureAsync(picture);
 
-        public IQueryable<Picture> RetrieveAllPictures() =>
-            this.storageBroker.SelectAllPictures();
+        public async ValueTask<IQueryable<Picture>> RetrieveAllPicturesAsync() =>
+            await this.storageBroker.SelectAllPicturesAsync();
 
         public async ValueTask<Picture> RetrievePictureByIdAsync(int pictureId) =>
             await this.storageBroker.SelectPictureByIdAsync(pictureId);
