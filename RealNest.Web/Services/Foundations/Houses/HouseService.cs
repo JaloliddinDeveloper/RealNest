@@ -19,8 +19,8 @@ namespace RealNest.Web.Services.Foundations.Houses
         public async ValueTask<House> AddHouseAsync(House house) =>
             await this.storageBroker.InsertHouseAsync(house);
 
-        public IQueryable<House> RetrieveAllHouses() =>
-            this.storageBroker.SelectAllHouses();
+        public async ValueTask<IQueryable<House>> RetrieveAllHousesAsync() =>
+           await this.storageBroker.SelectAllHousesAsync();
 
         public async ValueTask<House> RetrieveHouseByIdAsync(int houseId) =>
             await this.storageBroker.SelectHouseByIdAsync(houseId);

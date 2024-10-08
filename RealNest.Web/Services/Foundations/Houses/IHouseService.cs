@@ -12,7 +12,7 @@ namespace RealNest.Web.Services.Foundations.Houses
     public interface IHouseService
     {
         ValueTask<House> AddHouseAsync(House house);
-        IQueryable<House> RetrieveAllHouses();
+       ValueTask<IQueryable<House>> RetrieveAllHousesAsync();
         ValueTask<House> RetrieveHouseByIdAsync(int houseId);
         ValueTask<House> ModifyHouseAsync(House house);
         ValueTask<House> RemoveHouseAsync(int houseId);
