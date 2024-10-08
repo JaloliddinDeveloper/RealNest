@@ -4,6 +4,8 @@
 //--------------------------------------------------
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Pictures;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealNest.Web.Services.Foundations.Pictures
 {

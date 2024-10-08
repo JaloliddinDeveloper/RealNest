@@ -3,6 +3,8 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Users;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealNest.Web.Services.Foundations.Users
 {

@@ -4,6 +4,8 @@
 //--------------------------------------------------
 
 using RealNest.Web.Models.Foundations.Houses;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RealNest.Web.Services.Foundations.Houses
 {

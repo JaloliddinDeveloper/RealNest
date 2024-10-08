@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.Foundations.Users;
+using System.Collections.Generic;
 
 namespace RealNest.Web.Models.Foundations.Houses
 {
