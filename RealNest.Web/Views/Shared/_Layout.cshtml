@@ -64,10 +64,11 @@
             .btn-primary:hover {
                 background-color: #0056b3;
             }
+
         .google-search-input {
             height: 45px;
-            width: 400px; 
-            max-width: 100%; 
+            width: 400px;
+            max-width: 100%;
             border-radius: 25px 0 0 25px;
             border: 1px solid #ddd;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -102,7 +103,7 @@
         .google-search-bar-wrapper {
             display: flex;
             justify-content: center;
-            margin: 20px 0; 
+            margin: 20px 0;
         }
 
         .modal-header {
@@ -116,6 +117,7 @@
         .form-control {
             border-radius: 25px;
         }
+
         .footer {
             background-color: #f8f9fa;
             padding: 10px 0;
@@ -155,16 +157,15 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <form asp-action="SignUp" asp-controller="Account" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-outline-primary me-2">Sign Up</button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <form asp-action="SignIn" asp-controller="Account" method="get" class="d-inline">
+                        <form asp-action="Login" asp-controller="Account" method="get" class="d-inline">
                             <button type="submit" class="btn btn-outline-primary me-2">Sign In</button>
                         </form>
                     </li>
-
+                    <li class="nav-item">
+                        <form asp-action="Register" asp-controller="Account" method="get" class="d-inline">
+                            <button type="submit" class="btn btn-outline-primary me-2">Sign Up</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </nav>
