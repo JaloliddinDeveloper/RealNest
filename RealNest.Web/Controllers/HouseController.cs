@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿//--------------------------------------------------
+// Copyright (c) Coalition Of Good-Hearted Engineers
+// Free To Use To Find Comfort And Peace
+//--------------------------------------------------
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
@@ -31,14 +35,13 @@ namespace RealNest.Web.Controllers
                     var house = new House
                     {
                         Title = model.Title,
-                        UserId = userId // UserId ni house ga o'rnatish
+                        UserId = userId
                     };
 
                     await this.storageBroker.InsertHouseAsync(house);
-                    return RedirectToAction("Create", "House");
+                    return RedirectToAction("Index", "Home");
                 }
 
-                // Agar sessiyada foydalanuvchi topilmasa, xatolik qaytarish
                 ModelState.AddModelError("", "Foydalanuvchi ma'lumotlari topilmadi.");
             }
 

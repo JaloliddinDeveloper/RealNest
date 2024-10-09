@@ -3,6 +3,8 @@
 <h2 class="text-center mb-4">Tizimga kirish</h2>
 
 <form asp-action="Login" method="post" class="w-50 mx-auto">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="form-group mb-3">
         <label for="email" class="form-label">Email</label>
         <input asp-for="Email" class="form-control" id="email" placeholder="Emailingizni kiriting" required />
