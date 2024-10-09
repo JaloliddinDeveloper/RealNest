@@ -3,6 +3,7 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Users;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,5 +17,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<User> UpdateUserAsync(User user);
         ValueTask<User> DeleteUserAsync(User user);
         ValueTask<User> SelectUserByEmailAsync(string email);
+        ValueTask<User> SelectUserByIdAsync(Guid userId);
     }
 }

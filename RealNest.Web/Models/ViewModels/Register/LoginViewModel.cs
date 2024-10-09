@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RealNest.Web.Models.ViewModels
+namespace RealNest.Web.Models.ViewModels.Register
 {
     public class LoginViewModel
     {

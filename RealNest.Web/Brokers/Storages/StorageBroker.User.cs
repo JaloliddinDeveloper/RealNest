@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Models.Foundations.Users;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -31,6 +32,11 @@ namespace RealNest.Web.Brokers.Storages
         {
             using var broker = new StorageBroker(this.configuration);
             return await broker.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async ValueTask<User> SelectUserByIdAsync(Guid userId)
+        {
+            return await this.Users.FindAsync(userId);
         }
     }
 }

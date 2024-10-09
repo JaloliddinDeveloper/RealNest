@@ -1,0 +1,23 @@
+﻿@model HouseViewModel
+
+@{
+    ViewData["Title"] = "Create House Listing";
+}
+
+<h2>Create House Listing</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
