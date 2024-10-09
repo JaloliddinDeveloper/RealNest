@@ -27,7 +27,7 @@ namespace RealNest.Web.Brokers.Storages
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
             string connectionString = this.configuration
-                .GetConnectionString(name: "DefaultConnection");
+                .GetConnectionString(name: "DefaultConnectionString");
 
             optionsBuilder.UseSqlServer(connectionString);
         }

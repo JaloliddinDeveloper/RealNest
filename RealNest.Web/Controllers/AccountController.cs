@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Users;
-using RealNest.Web.Models.ViewModels;
+using RealNest.Web.Models.ViewModels.Register;
 using System.Threading.Tasks;
 
 namespace RealNest.Web.Controllers
@@ -61,21 +61,29 @@ namespace RealNest.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Email bo'yicha foydalanuvchini qidirish
                 var user = await this.storageBroker.SelectUserByEmailAsync(model.Email);
 
                 if (user != null)
                 {
+                    // Parolni tekshirish
                     var result = this.passwordHasher.VerifyHashedPassword(user, user.Password, model.Password);
 
                     if (result == PasswordVerificationResult.Success)
                     {
+                        // Muvaffaqiyatli login bo'lganda, foydalanuvchining ID sini sessiyaga yozish
                         HttpContext.Session.SetString("UserId", user.UserId.ToString());
-                        return RedirectToAction("Eloon", "Elon");
+
+                        // Foydalanuvchini House yaratish sahifasiga yo'naltirish
+                        return RedirectToAction("Create", "House");
                     }
                 }
 
+                // Agar foydalanuvchi yoki parol xato bo'lsa, xato xabari qo'shish
                 ModelState.AddModelError("", "Login yoki parol xato.");
             }
+
+            // Agar model to'g'ri bo'lmasa, login sahifasini qaytarish
             return View(model);
         }
     }
