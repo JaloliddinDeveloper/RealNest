@@ -1,4 +1,4 @@
-﻿@model HouseViewModel
+﻿@model AddHouseViewModel
 
 @{
     ViewData["Title"] = "Create House Listing";
@@ -12,12 +12,9 @@
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
