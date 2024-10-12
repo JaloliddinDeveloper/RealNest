@@ -32,7 +32,7 @@ namespace RealNest.Web.Controllers
              View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(HouseViewModel model)
+        public async Task<IActionResult> Create(AddHouseViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -40,16 +40,25 @@ namespace RealNest.Web.Controllers
 
                 if (Guid.TryParse(userIdString, out Guid userId))
                 {
+                    if (model == null || string.IsNullOrEmpty(model.Title))
+                    {
+                        throw new ArgumentNullException("House object or Title cannot be null.");
+                    }
+
                     var house = new House
                     {
                         Title = model.Title,
                         UserId = userId
                     };
 
+                    if (house == null)
+                    {
+                        throw new InvalidOperationException("Cannot add a null house to the database.");
+                    }
+
                     await this.storageBroker.InsertHouseAsync(house);
                     return RedirectToAction("HouseList", "House");
                 }
-
                 ModelState.AddModelError("", "Foydalanuvchi ma'lumotlari topilmadi.");
             }
 
@@ -69,7 +78,6 @@ namespace RealNest.Web.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
-
 
         [HttpGet]
         public async ValueTask<IActionResult> EditHouse(Guid id)
@@ -120,6 +128,33 @@ namespace RealNest.Web.Controllers
                 }
             }
             return View(house); 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmRemoveHouse(Guid id)
+        {
+            House houseToRemove = await storageBroker.SelectHouseByIdAsync(id);
+
+            if (houseToRemove != null)
+            {
+                return View(houseToRemove);
+            }
+            ModelState.AddModelError(string.Empty, "House not found.");
+            return RedirectToAction("HouseList");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveHouse(Guid id)
+        {
+            var result = await this.houseService.RemoveHouseAsync(id);
+
+            if (result != null)
+            {
+                return RedirectToAction("HouseList");
+            }
+
+            ModelState.AddModelError(string.Empty, "Unable to delete the house. Please try again.");
+            return RedirectToAction("HouseList");
         }
     }
 }
