@@ -20,7 +20,7 @@ namespace RealNest.Web.Brokers.Storages
         public async ValueTask<IQueryable<User>> SelectAllUsersAsync() =>
            await SelectAllAsync<User>();
 
-        public async ValueTask<User> SelectUserByIdAsync(int userId)=>
+        public async ValueTask<User> SelectUserByIdAsync(Guid userId)=>
             await SelectAsync<User>(userId);
 
         public async ValueTask<User> UpdateUserAsync(User user)=>
@@ -28,15 +28,17 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<User> DeleteUserAsync(User user)=>
             await DeleteAsync(user);
+
         public async ValueTask<User> SelectUserByEmailAsync(string email)
         {
             using var broker = new StorageBroker(this.configuration);
             return await broker.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
-
-        public async ValueTask<User> SelectUserByIdAsync(Guid userId)
+        public async ValueTask<bool> UserExistsAsync(Guid userId)
         {
-            return await this.Users.FindAsync(userId);
+            using var broker = new StorageBroker(this.configuration);
+            return await broker.Users.AnyAsync(user => user.Id == userId);
         }
+
     }
 }

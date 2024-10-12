@@ -3,6 +3,7 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Pictures;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace RealNest.Web.Brokers.Storages
     {
         ValueTask<Picture> InsertPictureAsync(Picture picture);
         ValueTask<IQueryable<Picture>> SelectAllPicturesAsync();
-        ValueTask<Picture> SelectPictureByIdAsync(int pictureId);
+        ValueTask<Picture> SelectPictureByIdAsync(Guid pictureId);
         ValueTask<Picture> UpdatePictureAsync(Picture picture);
         ValueTask<Picture> DeletePictureAsync(Picture picture);
     }

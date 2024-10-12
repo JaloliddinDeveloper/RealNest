@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Users;
+using RealNest.Web.Services.Foundations.Houses;
 using System;
 
 public class Program
@@ -25,6 +26,8 @@ public class Program
         });
 
         builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+        builder.Services.AddTransient<IHouseService, HouseService>();
+
         builder.Services.AddSession();
         builder.Services.AddAuthorization();
         builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

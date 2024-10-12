@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Models.Foundations.Houses;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,18 +15,23 @@ namespace RealNest.Web.Brokers.Storages
         public DbSet<House> Houses { get; set; }
 
         public async ValueTask<House> InsertHouseAsync(House house) =>
-             await InsertAsync(house);
+           await InsertAsync(house);
 
         public async ValueTask<IQueryable<House>> SelectAllHousesAsync() =>
            await SelectAllAsync<House>();
 
-        public async ValueTask<House> SelectHouseByIdAsync(int houseId) =>
-            await SelectAsync<House>(houseId);
+        public async ValueTask<House> SelectHouseByIdAsync(Guid houseId) =>
+           await SelectAsync<House>(houseId);
 
         public async ValueTask<House> UpdateHouseAsync(House house) =>
-            await UpdateAsync(house);
+           await UpdateAsync(house);
 
         public async ValueTask<House> DeleteHouseAsync(House house) =>
-            await DeleteAsync(house);
+          await DeleteAsync(house);
+        public async ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId)
+        {
+            IQueryable<House> userHouses = await SelectAllAsync<House>();
+            return userHouses.Where(h => h.UserId == userId);
+        }
     }
 }

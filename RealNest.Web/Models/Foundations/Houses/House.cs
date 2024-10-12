@@ -6,16 +6,18 @@ using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.Foundations.Users;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace RealNest.Web.Models.Foundations.Houses
 {
     public class House
     {
-        public Guid HouseId { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public Guid UserId { get; set; }
+        [JsonIgnore]
         public User User { get; set; }
+        [JsonIgnore]
         public IEnumerable<Picture> Pictures { get; set; }
-        public HouseType Type { get; set; } 
     }
 }

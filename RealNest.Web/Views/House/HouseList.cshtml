@@ -1,0 +1,26 @@
+﻿@model IEnumerable<House>
+
+<h2>Uylaringiz Ro'yxati</h2>
+
+<a href="@Url.Action("Create", "House")" class="btn btn-primary">Uy Qo'shish</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Sarlavha</th>
+            <th>Amallar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var house in Model)
+        {
+            <tr>
+                <td>@house.Title</td>
+                <td>
+                    <a asp-action="EditHouse" asp-route-id="@house.Id" class="btn btn-warning">Tahrirlash</a>
+                    <a href="@Url.Action("DeleteHouse", "House", new { id = house.Id })" class="btn btn-danger">O'chirish</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

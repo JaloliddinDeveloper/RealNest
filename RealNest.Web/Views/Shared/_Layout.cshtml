@@ -12,21 +12,21 @@
     <style>
         .navbar {
             background-color: #f8f9fa;
-            padding: 10px 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 5px 15px; /* Reduced padding for a smaller header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for a less prominent effect */
         }
 
         .navbar-brand img {
-            height: 70px;
+            height: 65px; /* Reduced image height */
             width: auto;
             border-radius: 5px;
-            margin-right: 20px;
+            margin-right: 15px; /* Adjusted spacing */
         }
 
         .navbar-nav .nav-link {
             font-weight: bold;
-            font-size: 25px;
-            padding: 5px 10px;
+            font-size: 20px; 
+            padding: 3px 10px; /* Reduced padding */
             transition: background-color 0.3s, color 0.3s;
             border-radius: 5px;
         }
@@ -39,8 +39,8 @@
         .btn-outline-primary,
         .btn-primary {
             border-radius: 25px;
-            padding: 10px 20px;
-            font-size: 20px;
+            padding: 8px 15px;
+            font-size: 18px; 
             font-weight: bold;
         }
 
@@ -122,6 +122,22 @@
             background-color: #f8f9fa;
             padding: 10px 0;
         }
+
+        .social-links a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .social-icon {
+            width: 25px;
+            height: 25px;
+            filter: grayscale(100%);
+            vertical-align: middle;
+        }
+
+            .social-icon:hover {
+                filter: grayscale(0%);
+            }
     </style>
 </head>
 
@@ -176,46 +192,25 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted py-3">
+    <footer class="border-top footer text-muted py-0">
         <div class="container text-center">
             <div class="social-links d-flex justify-content-center align-items-center">
-                <a href="https://t.me/JaloliddinDeveloper" target="_blank" class="mx-3">
+                <a href="https://t.me/JaloliddinDeveloper" target="_blank" class="mx-2">
                     <img src="/images/telegram.png" alt="Telegram" class="social-icon">
                 </a>
-                <a href="https://www.instagram.com/jaloliddin_mahkamoff" target="_blank" class="mx-3">
+                <a href="https://www.instagram.com/jaloliddin_mahkamoff" target="_blank" class="mx-2">
                     <img src="~/images/Insta.png" alt="Instagram" class="social-icon">
                 </a>
-                <a href="https://github.com/JaloliddinDeveloper" target="_blank" class="mx-3">
+                <a href="https://github.com/JaloliddinDeveloper" target="_blank" class="mx-2">
                     <img src="~/images/git.png" alt="GitHub" class="social-icon">
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank" class="mx-3">
+                <a href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank" class="mx-2">
                     <img src="~/images/play.png" alt="Play Market" class="social-icon">
                 </a>
             </div>
         </div>
     </footer>
 
-    <style>
-        .social-links a {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-            .social-links a:hover {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-
-        .social-icon {
-            width: 30px;
-            height: 30px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-            .social-icon:hover {
-                filter: grayscale(0%);
-            }
-    </style>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -223,10 +218,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-

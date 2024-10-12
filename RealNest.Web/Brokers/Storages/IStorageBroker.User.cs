@@ -13,10 +13,10 @@ namespace RealNest.Web.Brokers.Storages
     {
         ValueTask<User> InsertUserAsync(User user);
         ValueTask<IQueryable<User>> SelectAllUsersAsync();
-        ValueTask<User> SelectUserByIdAsync(int userId);
+        ValueTask<User> SelectUserByIdAsync(Guid userId);
         ValueTask<User> UpdateUserAsync(User user);
         ValueTask<User> DeleteUserAsync(User user);
         ValueTask<User> SelectUserByEmailAsync(string email);
-        ValueTask<User> SelectUserByIdAsync(Guid userId);
+        ValueTask<bool> UserExistsAsync(Guid userId);
     }
 }

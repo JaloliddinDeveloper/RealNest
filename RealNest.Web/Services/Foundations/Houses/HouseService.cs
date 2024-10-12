@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,13 +23,32 @@ namespace RealNest.Web.Services.Foundations.Houses
         public async ValueTask<IQueryable<House>> RetrieveAllHousesAsync() =>
            await this.storageBroker.SelectAllHousesAsync();
 
-        public async ValueTask<House> RetrieveHouseByIdAsync(int houseId) =>
+        public async ValueTask<House> RetrieveHouseByIdAsync(Guid houseId) =>
             await this.storageBroker.SelectHouseByIdAsync(houseId);
 
         public async ValueTask<House> ModifyHouseAsync(House house) =>
             await this.storageBroker.UpdateHouseAsync(house);
 
-        public async ValueTask<House> RemoveHouseAsync(int houseId)
+        public async ValueTask<House> UpdateHouseAsync(House house)
+        {
+            var existingHouse = await this.storageBroker.SelectHouseByIdAsync(house.Id);
+
+            if (existingHouse != null)
+            {
+                if (await this.storageBroker.UserExistsAsync(house.UserId))
+                {
+                    existingHouse.UserId = house.UserId;
+                    await this.storageBroker.UpdateHouseAsync(existingHouse);
+                    return existingHouse;
+                }
+                else
+                {
+                    throw new ArgumentException($"UserId {house.UserId} does not exist.");
+                }
+            }
+            throw new ArgumentException("House does not exist.");
+        }
+        public async ValueTask<House> RemoveHouseAsync(Guid houseId)
         {
             House maybeHouse = await this.storageBroker.SelectHouseByIdAsync(houseId);
             return await this.storageBroker.DeleteHouseAsync(maybeHouse);

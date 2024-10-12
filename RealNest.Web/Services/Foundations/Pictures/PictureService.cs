@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Pictures;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,13 +23,13 @@ namespace RealNest.Web.Services.Foundations.Pictures
         public async ValueTask<IQueryable<Picture>> RetrieveAllPicturesAsync() =>
             await this.storageBroker.SelectAllPicturesAsync();
 
-        public async ValueTask<Picture> RetrievePictureByIdAsync(int pictureId) =>
+        public async ValueTask<Picture> RetrievePictureByIdAsync(Guid pictureId) =>
             await this.storageBroker.SelectPictureByIdAsync(pictureId);
 
         public async ValueTask<Picture> ModifyPictureAsync(Picture picture) =>
             await this.storageBroker.UpdatePictureAsync(picture);
 
-        public async ValueTask<Picture> RemovePictureAsync(int pictureId)
+        public async ValueTask<Picture> RemovePictureAsync(Guid pictureId)
         {
             Picture maybePicture =
                 await this.storageBroker.SelectPictureByIdAsync(pictureId);

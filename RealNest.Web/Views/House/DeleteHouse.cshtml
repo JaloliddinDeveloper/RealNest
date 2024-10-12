@@ -1,0 +1,10 @@
+﻿@model House
+
+<h2>Uyni o'chirishni tasdiqlaysizmi?</h2>
+<p>@Model.Title (ID: @Model.Id)</p>
+
+<form asp-action="DeleteHouse" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">O'chirishni tasdiqlash</button>
+    <a asp-action="HouseList" class="btn btn-secondary">Orqaga</a>
+</form>
