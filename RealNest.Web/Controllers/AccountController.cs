@@ -69,9 +69,9 @@ namespace RealNest.Web.Controllers
 
                     if (result == PasswordVerificationResult.Success)
                     {
-                        HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                        HttpContext.Session.SetString("UserId", user.Id.ToString());
 
-                        return RedirectToAction("Create", "House");
+                        return RedirectToAction("HouseList", "House");
                     }
                 }
                 ModelState.AddModelError("", "Login yoki parol xato.");

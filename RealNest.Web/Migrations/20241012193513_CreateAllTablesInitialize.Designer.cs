@@ -12,7 +12,7 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241009220308_CreateAllTablesInitialize")]
+    [Migration("20241012193513_CreateAllTablesInitialize")]
     partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
@@ -27,29 +27,26 @@ namespace RealNest.Web.Migrations
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Houses.House", b =>
                 {
-                    b.Property<Guid>("HouseId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("HouseId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Houses", (string)null);
+                    b.ToTable("Houses");
                 });
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Pictures.Picture", b =>
                 {
-                    b.Property<Guid>("PictureId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -59,16 +56,16 @@ namespace RealNest.Web.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PictureId");
+                    b.HasKey("Id");
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("Pictures", (string)null);
+                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Users.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -81,9 +78,9 @@ namespace RealNest.Web.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Houses.House", b =>

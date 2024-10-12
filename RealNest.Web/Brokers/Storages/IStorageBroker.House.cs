@@ -3,6 +3,7 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Houses;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,8 +13,9 @@ namespace RealNest.Web.Brokers.Storages
     {
         ValueTask<House> InsertHouseAsync(House house);
         ValueTask<IQueryable<House>> SelectAllHousesAsync();
-        ValueTask<House> SelectHouseByIdAsync(int houseId);
+        ValueTask<House> SelectHouseByIdAsync(Guid houseId);
         ValueTask<House> UpdateHouseAsync(House house);
         ValueTask<House> DeleteHouseAsync(House house);
+        ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId);
     }
 }

@@ -1,0 +1,13 @@
+﻿@model House
+
+<h2>Uy Tahrirlash</h2>
+
+<form asp-action="EditHouse" method="post">
+    <div class="form-group">
+        <label for="Title">Sarlavha</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required />
+    </div>
+    <input type="hidden" name="UserId" value="@Model.UserId" />
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <button type="submit" class="btn btn-primary">Saqlash</button>
+</form>

@@ -4,6 +4,7 @@
 //--------------------------------------------------
 
 using RealNest.Web.Models.Foundations.Pictures;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,8 +14,8 @@ namespace RealNest.Web.Services.Foundations.Pictures
     {
         ValueTask<Picture> AddPictureAsync(Picture picture);
         ValueTask<IQueryable<Picture>> RetrieveAllPicturesAsync();
-        ValueTask<Picture> RetrievePictureByIdAsync(int pictureId);
+        ValueTask<Picture> RetrievePictureByIdAsync(Guid pictureId);
         ValueTask<Picture> ModifyPictureAsync(Picture picture);
-        ValueTask<Picture> RemovePictureAsync(int houseId);
+        ValueTask<Picture> RemovePictureAsync(Guid houseId);
     }
 }

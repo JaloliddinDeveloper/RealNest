@@ -27,7 +27,7 @@ namespace RealNest.Web.Brokers.Storages
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
             string connectionString = this.configuration
-                .GetConnectionString(name: "DefaultConnectionString");
+                .GetConnectionString(name: "DefaultConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
         }
@@ -45,11 +45,11 @@ namespace RealNest.Web.Brokers.Storages
         private async ValueTask<T> SelectAsync<T>(params object[] @objectIds) where T : class =>
             await this.FindAsync<T>(@objectIds);
 
-        private async ValueTask<T> UpdateAsync<T>(T @object)
+        private async ValueTask<T> UpdateAsync<T>(T @object) where T : class
         {
-            this.Entry(@object).State = EntityState.Modified;
-            await this.SaveChangesAsync();
-            DetachEntity(@object);
+            using var broker = new StorageBroker(this.configuration);
+            broker.Entry(@object).State = EntityState.Modified;
+            await broker.SaveChangesAsync();
 
             return @object;
         }
@@ -67,22 +67,29 @@ namespace RealNest.Web.Brokers.Storages
         {
             this.Entry(@object).State = EntityState.Detached;
         }
+        public override void Dispose() { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<House>().ToTable("Houses");
-            modelBuilder.Entity<Picture>().ToTable("Pictures");
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.Id); 
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Houses)       
+                .WithOne(h => h.User)         
+                .HasForeignKey(h => h.UserId) 
+                .OnDelete(DeleteBehavior.Cascade); 
+           
+            modelBuilder.Entity<House>()
+                .HasKey(h => h.Id); 
 
             modelBuilder.Entity<House>()
-                .HasOne(h => h.User)
-                .WithMany(u => u.Houses)
-                .HasForeignKey(h => h.UserId);
-
-            modelBuilder.Entity<Picture>()
-                .HasOne(p => p.House)
-                .WithMany(h => h.Pictures)
-                .HasForeignKey(p => p.HouseId);
+                .HasMany(h => h.Pictures)      
+                .WithOne(p => p.House)         
+                .HasForeignKey(p => p.HouseId) 
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
