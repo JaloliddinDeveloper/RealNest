@@ -4,9 +4,7 @@
 //--------------------------------------------------
 namespace RealNest.Web.Models.Foundations.Houses
 {
-    public enum HouseType
+    public class ListingType
     {
-        Sale,
-        Rent
     }
 }
