@@ -1,0 +1,128 @@
+﻿@model House
+
+<h2>@Model.Title - Rasmlar</h2>
+
+<a href="@Url.Action("HouseList", "House")" class="btn btn-secondary">Ortga qaytish</a>
+
+@if (Model.Pictures != null && Model.Pictures.Any())
+{
+    <div class="gallery">
+        @foreach (var picture in Model.Pictures)
+        {
+            <div class="gallery-item">
+                <img src="@picture.ImageUrl" alt="House Image" class="gallery-image" onclick="openModal('@picture.ImageUrl')" />
+            </div>
+        }
+    </div>
+
+    <div id="imageModal" class="modal" style="display:none;">
+        <span class="close" onclick="closeModal()">&times;</span> <!-- Close button -->
+        <img class="modal-content" id="modalImage" loading="lazy"> <!-- Added loading attribute for better performance -->
+    </div>
+}
+else
+{
+    <span>Rasmlar mavjud emas</span>
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif; /* Modern font */
+    }
+
+    h2 {
+        color: #333; /* Darker text color for better contrast */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+        gap: 15px; /* Space between gallery items */
+        padding: 10px; /* Padding around the gallery */
+    }
+
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 10px; /* More rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    }
+
+        .gallery-item:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+        }
+
+    .gallery-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px; /* Rounded corners for images */
+        transition: transform 0.3s; /* Smooth image zoom */
+    }
+
+        .gallery-image:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+    /* Modal styles */
+    .modal {
+        display: flex; /* Flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+        padding: 20px; /* Padding around the modal */
+    }
+
+    .modal-content {
+        max-width: 100%; /* Allow full width */
+        max-height: 90vh; /* Max height for the modal image */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for modal image */
+        object-fit: contain; /* Maintain aspect ratio and fit within the modal */
+    }
+
+    .close {
+        color: white;
+        font-size: 40px; /* Increased size for better visibility */
+        position: absolute;
+        top: 20px; /* Position at the top */
+        right: 30px; /* Position on the right */
+        cursor: pointer;
+        transition: color 0.3s; /* Smooth color transition */
+        z-index: 1001; /* Ensure close button is above modal */
+    }
+
+        .close:hover {
+            color: #f00; /* Change color on hover */
+        }
+</style>
+
+<script>
+    function openModal(imageUrl) {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        modal.style.display = "flex"; // Show modal
+        modalImage.src = imageUrl; // Set image source
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none"; // Hide modal
+    }
+
+    // Close the modal when clicking anywhere outside the modal image
+    window.onclick = function(event) {
+        const modal = document.getElementById("imageModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>

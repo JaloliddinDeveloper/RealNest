@@ -17,7 +17,6 @@ namespace RealNest.Web.Models.Foundations.Houses
         public Guid UserId { get; set; }
         [JsonIgnore]
         public User User { get; set; }
-        [JsonIgnore]
         public IEnumerable<Picture> Pictures { get; set; }
     }
 }

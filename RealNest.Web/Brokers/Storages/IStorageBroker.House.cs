@@ -17,5 +17,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<House> UpdateHouseAsync(House house);
         ValueTask<House> DeleteHouseAsync(House house);
         ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId);
+        Task<House> SelectHouseWithPictures(Guid houseId);
     }
 }

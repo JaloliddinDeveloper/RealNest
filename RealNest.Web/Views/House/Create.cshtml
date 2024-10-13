@@ -1,20 +1,39 @@
 ﻿@model AddHouseViewModel
 
 @{
-    ViewData["Title"] = "Create House Listing";
+    ViewData["Title"] = "Uy yaratish";
 }
 
-<h2>Create House Listing</h2>
+<h2>Uy yaratish</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+
+    <div class="form-group">
+        <label for="HouseImages">Uy rasmlarini yuklash</label>
+        <input type="file" id="HouseImages" name="HouseImages" multiple class="form-control" />
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="addImageBtn">Rasmlar qo'shish</button>
+
+    <button type="submit" class="btn btn-primary">Uy yaratish</button>
 </form>
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        document.getElementById('addImageBtn').addEventListener('click', function() {
+            const inputFile = document.getElementById('HouseImages');
+            const newFile = document.createElement('input');
+            newFile.type = 'file';
+            newFile.name = 'HouseImages';
+            newFile.multiple = true;
+            newFile.className = 'form-control mt-2';
+            inputFile.parentNode.insertBefore(newFile, inputFile.nextSibling);
+        });
+    </script>
 }

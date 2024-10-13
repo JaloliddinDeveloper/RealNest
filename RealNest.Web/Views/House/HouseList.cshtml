@@ -17,6 +17,7 @@
             <tr>
                 <td>@house.Title</td>
                 <td>
+                    <a asp-action="HouseImages" asp-route-id="@house.Id" class="btn btn-info">Uy Rasmlari</a>
                     <a asp-action="EditHouse" asp-route-id="@house.Id" class="btn btn-warning">Tahrirlash</a>
                     <a href="@Url.Action("ConfirmRemoveHouse", "House", new { id = house.Id })" class="btn btn-danger">O'chirish</a>
                 </td>
