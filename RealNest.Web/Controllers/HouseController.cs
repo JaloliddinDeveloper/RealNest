@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
+using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.ViewModels;
 using RealNest.Web.Services.Foundations.Houses;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,7 +35,7 @@ namespace RealNest.Web.Controllers
              View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(AddHouseViewModel model)
+        public async Task<IActionResult> Create(AddHouseViewModel model, List<IFormFile> HouseImages)
         {
             if (ModelState.IsValid)
             {
@@ -51,12 +54,42 @@ namespace RealNest.Web.Controllers
                         UserId = userId
                     };
 
-                    if (house == null)
+                    await this.storageBroker.InsertHouseAsync(house);
+
+                    if (HouseImages != null && HouseImages.Any())
                     {
-                        throw new InvalidOperationException("Cannot add a null house to the database.");
+                        foreach (var image in HouseImages)
+                        {
+                            if (image.Length > 0)
+                            {
+                                var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(image.FileName);
+
+                                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
+
+                                if (!Directory.Exists(uploadsFolder))
+                                {
+                                    Directory.CreateDirectory(uploadsFolder);
+                                }
+
+                                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                                {
+                                    await image.CopyToAsync(fileStream);
+                                }
+
+                                var picture = new Picture
+                                {
+                                    Id = Guid.NewGuid(),
+                                    ImageUrl = "/imagens/" + uniqueFileName,  
+                                    HouseId = house.Id 
+                                };
+
+                                await this.storageBroker.InsertPictureAsync(picture);
+                            }
+                        }
                     }
 
-                    await this.storageBroker.InsertHouseAsync(house);
                     return RedirectToAction("HouseList", "House");
                 }
                 ModelState.AddModelError("", "Foydalanuvchi ma'lumotlari topilmadi.");
@@ -77,6 +110,18 @@ namespace RealNest.Web.Controllers
                 return View(userHouses.ToList());
             }
             return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> HouseImages(Guid id)
+        {
+            var house = await storageBroker.SelectHouseWithPictures(id);
+
+            if (house == null)
+            {
+                return NotFound(); 
+            }
+            return View(house); 
         }
 
         [HttpGet]

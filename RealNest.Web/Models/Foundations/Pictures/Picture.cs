@@ -10,10 +10,9 @@ namespace RealNest.Web.Models.Foundations.Pictures
 {
     public class Picture
     {
-        public Guid Id { get; set; }
-        public string ImageUrl { get; set; }
+        public Guid Id { get; set; } 
+        public string ImageUrl { get; set; } 
         public Guid HouseId { get; set; }
-        [JsonIgnore]
-        public House House { get; set; }
+        public virtual House House { get; set; } 
     }
 }

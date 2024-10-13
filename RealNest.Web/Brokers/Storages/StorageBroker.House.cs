@@ -33,5 +33,12 @@ namespace RealNest.Web.Brokers.Storages
             IQueryable<House> userHouses = await SelectAllAsync<House>();
             return userHouses.Where(h => h.UserId == userId);
         }
+
+        public async Task<House> SelectHouseWithPictures(Guid houseId)
+        { 
+            return await this.Houses
+                .Include(h => h.Pictures)
+                .FirstOrDefaultAsync(h => h.Id == houseId);
+        }
     }
 }
