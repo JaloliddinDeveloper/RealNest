@@ -14,9 +14,19 @@ namespace RealNest.Web.Models.Foundations.Houses
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string Location { get; set; }
+        public string Address { get; set; }
+        public double SquareFootage { get; set; }
+        public ListingType ListingType { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
+        public string ContactInformation { get; set; }
         public Guid UserId { get; set; }
         [JsonIgnore]
         public User User { get; set; }
         public IEnumerable<Picture> Pictures { get; set; }
+        public string MainImageUrl { get; set; }
     }
 }
