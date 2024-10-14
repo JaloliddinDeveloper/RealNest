@@ -27,10 +27,9 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
+        public IActionResult Register()=>
+            View();
+        
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -40,7 +39,7 @@ namespace RealNest.Web.Controllers
                 var user = new User
                 {
                     Username = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
                 };
                 user.Password = this.passwordHasher.HashPassword(user, model.Password);
 
@@ -51,11 +50,9 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
+        public IActionResult Login()=>
+            View();
+        
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {

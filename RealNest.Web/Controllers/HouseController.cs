@@ -2,6 +2,7 @@
 // Copyright (c) Coalition Of Good-Hearted Engineers
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
@@ -23,7 +24,7 @@ namespace RealNest.Web.Controllers
         private readonly IHouseService houseService;
 
         public HouseController(
-            IStorageBroker storageBroker, 
+            IStorageBroker storageBroker,
             IHouseService houseService)
         {
             this.storageBroker = storageBroker;
@@ -51,6 +52,15 @@ namespace RealNest.Web.Controllers
                     var house = new House
                     {
                         Title = model.Title,
+                        Description = model.Description,
+                        Price = model.Price,
+                        Address = model.Address,
+                        Location = model.Location,
+                        SquareFootage = model.SquareFootage,
+                        ListingType = model.ListingType,
+                        ContactInformation = model.ContactInformation,
+                        CreatedDate = DateTime.Now,
+                        UpdatedDate = DateTime.Now,
                         UserId = userId
                     };
 
@@ -81,8 +91,8 @@ namespace RealNest.Web.Controllers
                                 var picture = new Picture
                                 {
                                     Id = Guid.NewGuid(),
-                                    ImageUrl = "/imagens/" + uniqueFileName,  
-                                    HouseId = house.Id 
+                                    ImageUrl = "/imagens/" + uniqueFileName,
+                                    HouseId = house.Id
                                 };
 
                                 await this.storageBroker.InsertPictureAsync(picture);
@@ -119,9 +129,9 @@ namespace RealNest.Web.Controllers
 
             if (house == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
-            return View(house); 
+            return View(house);
         }
 
         [HttpGet]
@@ -157,7 +167,7 @@ namespace RealNest.Web.Controllers
                 {
                     if (await storageBroker.UserExistsAsync(house.UserId))
                     {
-                        existingHouse.Title = house.Title; 
+                        existingHouse.Title = house.Title;
 
                         await storageBroker.UpdateHouseAsync(existingHouse);
                         return RedirectToAction("HouseList");
@@ -172,7 +182,7 @@ namespace RealNest.Web.Controllers
                     ModelState.AddModelError(string.Empty, "House not found.");
                 }
             }
-            return View(house); 
+            return View(house);
         }
 
         [HttpGet]

@@ -28,6 +28,7 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<House> DeleteHouseAsync(House house) =>
           await DeleteAsync(house);
+
         public async ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId)
         {
             IQueryable<House> userHouses = await SelectAllAsync<House>();
