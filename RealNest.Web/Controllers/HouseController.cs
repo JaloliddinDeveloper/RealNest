@@ -57,8 +57,8 @@ namespace RealNest.Web.Controllers
                         Address = model.Address,
                         Location = model.Location,
                         SquareFootage = model.SquareFootage,
-                        ListingType = model.ListingType,
-                        ContactInformation = model.ContactInformation,
+                        ListingType=model.ListingType,
+                        ContactInformation=model.ContactInformation,
                         CreatedDate = DateTime.Now,
                         UpdatedDate = DateTime.Now,
                         UserId = userId

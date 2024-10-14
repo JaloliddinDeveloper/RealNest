@@ -9,24 +9,25 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RealNest.Web.styles.css" asp-append-version="true" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
     <style>
         .navbar {
             background-color: #f8f9fa;
-            padding: 5px 15px; /* Reduced padding for a smaller header */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for a less prominent effect */
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand img {
-            height: 65px; /* Reduced image height */
+            height: 65px;
             width: auto;
             border-radius: 5px;
-            margin-right: 15px; /* Adjusted spacing */
+            margin-right: 15px;
         }
 
         .navbar-nav .nav-link {
             font-weight: bold;
-            font-size: 20px; 
-            padding: 3px 10px; /* Reduced padding */
+            font-size: 20px;
+            padding: 3px 10px;
             transition: background-color 0.3s, color 0.3s;
             border-radius: 5px;
         }
@@ -40,7 +41,7 @@
         .btn-primary {
             border-radius: 25px;
             padding: 8px 15px;
-            font-size: 18px; 
+            font-size: 18px;
             font-weight: bold;
         }
 
@@ -138,6 +139,7 @@
             .social-icon:hover {
                 filter: grayscale(0%);
             }
+
     </style>
 </head>
 
@@ -161,7 +163,10 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Buy">Buy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Rent">Rent</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HousesForRent">Rent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllHouses">AllHouses</a>
                     </li>
                 </ul>
                 <div class="google-search-bar-wrapper">
@@ -199,18 +204,28 @@
                     <img src="/images/telegram.png" alt="Telegram" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/jaloliddin_mahkamoff" target="_blank" class="mx-2">
-                    <img src="~/images/Insta.png" alt="Instagram" class="social-icon">
+                    <img src="/images/Insta.png" alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://github.com/JaloliddinDeveloper" target="_blank" class="mx-2">
-                    <img src="~/images/git.png" alt="GitHub" class="social-icon">
+                    <img src="/images/git.png" alt="GitHub" class="social-icon">
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=your_app_id" target="_blank" class="mx-2">
-                    <img src="~/images/play.png" alt="Play Market" class="social-icon">
+                    <img src="/images/play.png" alt="Play Market" class="social-icon">
                 </a>
             </div>
         </div>
     </footer>
 
+    <style>
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            image-rendering: auto;
+        }
+
+    </style>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

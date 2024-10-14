@@ -1,0 +1,31 @@
+﻿@model List<House>
+
+<h2 class="text-center mt-4">Ijaraga Beriladigan Uylar</h2>
+
+<div class="row">
+    @foreach (var house in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (house.Pictures != null && house.Pictures.Any())
+                {
+                  //  <img src="@Url.Content("~/uploads/" + house.Pictures.First().FileName)" class="card-img-top" alt="House image">
+                }
+                else
+                {
+                    <img src="~/images/no-image.png" class="card-img-top" alt="No image available">
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@house.Title</h5>
+                    <p class="card-text">@house.Description</p>
+                    <p class="card-text"><strong>Narx:</strong> $@house.Price</p>
+                    <p class="card-text"><strong>Manzil:</strong> @house.Address</p>
+                    <p class="card-text"><strong>Joylashuv:</strong> @house.Location</p>
+                    <p class="card-text"><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
+                    <a href="@Url.Action("Details", "House", new { id = house.Id })" class="btn btn-primary">Batafsil</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

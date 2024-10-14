@@ -2,6 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealNest.Web.Brokers.Storages;
 
 #nullable disable
@@ -13,6 +15,7 @@ namespace RealNest.Web.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
+#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
@@ -135,6 +138,7 @@ namespace RealNest.Web.Migrations
                 {
                     b.Navigation("Houses");
                 });
+#pragma warning restore 612, 618
         }
     }
 }
