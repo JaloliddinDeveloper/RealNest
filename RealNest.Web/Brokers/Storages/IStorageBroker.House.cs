@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Houses;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,5 +19,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<House> DeleteHouseAsync(House house);
         ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId);
         Task<House> SelectHouseWithPictures(Guid houseId);
+        Task<List<House>> SelectHousesWithPicturesAsync();
     }
 }
