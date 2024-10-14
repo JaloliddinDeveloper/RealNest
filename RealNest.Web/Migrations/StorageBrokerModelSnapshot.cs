@@ -2,8 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealNest.Web.Brokers.Storages;
 
 #nullable disable
@@ -15,7 +13,6 @@ namespace RealNest.Web.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
@@ -28,8 +25,35 @@ namespace RealNest.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactInformation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ListingType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<double>("SquareFootage")
+                        .HasColumnType("float");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -111,7 +135,6 @@ namespace RealNest.Web.Migrations
                 {
                     b.Navigation("Houses");
                 });
-#pragma warning restore 612, 618
         }
     }
 }

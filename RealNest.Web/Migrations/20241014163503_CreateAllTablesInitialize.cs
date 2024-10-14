@@ -1,4 +1,8 @@
-﻿using System;
+﻿//--------------------------------------------------
+// Copyright (c) Coalition Of Good-Hearted Engineers
+// Free To Use To Find Comfort And Peace
+//--------------------------------------------------
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -31,6 +35,15 @@ namespace RealNest.Web.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SquareFootage = table.Column<double>(type: "float", nullable: false),
+                    ListingType = table.Column<int>(type: "int", nullable: false),
+                    ContactInformation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

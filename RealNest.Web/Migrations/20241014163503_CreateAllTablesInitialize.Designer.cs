@@ -12,7 +12,7 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241013185207_CreateAllTablesInitialize")]
+    [Migration("20241014163503_CreateAllTablesInitialize")]
     partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
@@ -31,8 +31,35 @@ namespace RealNest.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactInformation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ListingType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<double>("SquareFootage")
+                        .HasColumnType("float");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

@@ -1,27 +1,90 @@
 ﻿@model IEnumerable<House>
 
-<h2>Uylaringiz Ro'yxati</h2>
+<h2 class="text-center mt-4">Uylaringiz Ro'yxati</h2>
 
-<a href="@Url.Action("Create", "House")" class="btn btn-primary">Uy Qo'shish</a>
+<a href="@Url.Action("Create", "House")" class="btn btn-primary mb-3">Uy Qo'shish</a>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Sarlavha</th>
-            <th>Amallar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var house in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-bordered table-hover modern-table">
+        <thead class="thead-light">
             <tr>
-                <td>@house.Title</td>
-                <td>
-                    <a asp-action="HouseImages" asp-route-id="@house.Id" class="btn btn-info">Uy Rasmlari</a>
-                    <a asp-action="EditHouse" asp-route-id="@house.Id" class="btn btn-warning">Tahrirlash</a>
-                    <a href="@Url.Action("ConfirmRemoveHouse", "House", new { id = house.Id })" class="btn btn-danger">O'chirish</a>
-                </td>
+                <th>Sarlavha</th>
+                <th>Ta'rif</th>
+                <th>Narx</th>
+                <th>Manzil</th>
+                <th>Joylashuv</th>
+                <th>Maydoni (kv.m)</th>
+                <th>Ro'yxat turi</th>
+                <th>Kontakt ma'lumotlari</th>
+                <th>Amallar</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var house in Model)
+            {
+                <tr>
+                    <td>@house.Title</td>
+                    <td>@house.Description</td>
+                    <td>@house.Price</td>
+                    <td>@house.Address</td>
+                    <td>@house.Location</td>
+                    <td>@house.SquareFootage</td>
+                    <td>@house.ListingType</td>
+                    <td>@house.ContactInformation</td>
+                    <td>
+                        <a asp-action="HouseImages" asp-route-id="@house.Id" class="btn btn-info btn-sm">Rasmlar</a>
+                        <a asp-action="EditHouse" asp-route-id="@house.Id" class="btn btn-warning btn-sm">Tahrirlash</a>
+                        <a href="@Url.Action("ConfirmRemoveHouse", "House", new { id = house.Id })" class="btn btn-danger btn-sm">O'chirish</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .modern-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .thead-light {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .modern-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .modern-table th {
+        background-color: #343a40;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .btn {
+        transition: all 0.3s ease;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
         }
-    </tbody>
-</table>
+
+    .table-responsive {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+</style>
