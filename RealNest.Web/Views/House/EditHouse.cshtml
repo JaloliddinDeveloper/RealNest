@@ -1,13 +1,42 @@
 ﻿@model House
 
-<h2>Uy Tahrirlash</h2>
+<h2 class="text-center mb-4">Uy Tahrirlash</h2>
 
-<form asp-action="EditHouse" method="post">
-    <div class="form-group">
+<form asp-action="EditHouse" method="post" class="p-4 border rounded shadow-sm">
+    <div class="form-group mb-3">
         <label for="Title">Sarlavha</label>
         <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required />
     </div>
+    <div class="form-group mb-3">
+        <label for="Description">Ta'rif</label>
+        <textarea class="form-control" id="Description" name="Description" rows="4">@Model.Description</textarea>
+    </div>
+    <div class="form-group mb-3">
+        <label for="Price">Narx</label>
+        <input type="number" class="form-control" id="Price" name="Price" value="@Model.Price" required />
+    </div>
+    <div class="form-group mb-3">
+        <label for="Address">Manzil</label>
+        <input type="text" class="form-control" id="Address" name="Address" value="@Model.Address" required />
+    </div>
+    <div class="form-group mb-3">
+        <label for="Location">Joylashuv</label>
+        <input type="text" class="form-control" id="Location" name="Location" value="@Model.Location" required />
+    </div>
+    <div class="form-group mb-3">
+        <label for="SquareFootage">Maydon (m²)</label>
+        <input type="number" class="form-control" id="SquareFootage" name="SquareFootage" value="@Model.SquareFootage" required />
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="ListingType">E'lon turi</label>
+        <select asp-for="ListingType" class="form-control" asp-items="Html.GetEnumSelectList<ListingType>()">
+            <option value="">Iltimos tanlang</option>
+        </select>
+        <span asp-validation-for="ListingType" class="text-danger"></span>
+    </div>
     <input type="hidden" name="UserId" value="@Model.UserId" />
     <input type="hidden" name="Id" value="@Model.Id" />
-    <button type="submit" class="btn btn-primary">Saqlash</button>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Saqlash</button>
+    </div>
 </form>
