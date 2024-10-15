@@ -25,18 +25,6 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Buy()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Rent()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public async Task<IActionResult> AllHouses()
         {
             var allHouses = await storageBroker.SelectHousesWithPicturesAsync();
@@ -76,6 +64,12 @@ namespace RealNest.Web.Controllers
                 return NotFound();
             }
             return View(house);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {
+            return View();  
         }
     }
 }
