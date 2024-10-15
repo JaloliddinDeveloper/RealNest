@@ -166,7 +166,13 @@ namespace RealNest.Web.Controllers
                     if (await storageBroker.UserExistsAsync(house.UserId))
                     {
                         existingHouse.Title = house.Title;
-
+                        existingHouse.Description = house.Description;
+                        existingHouse.Price = house.Price;
+                        existingHouse.Address = house.Address;
+                        existingHouse.Location= house.Location;
+                        existingHouse.SquareFootage = house.SquareFootage;
+                        existingHouse.ListingType = house.ListingType;
+                        existingHouse.UpdatedDate=DateTime.Now;
                         await storageBroker.UpdateHouseAsync(existingHouse);
                         return RedirectToAction("HouseList");
                     }
