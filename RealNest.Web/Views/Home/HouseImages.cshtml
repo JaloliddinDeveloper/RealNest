@@ -4,7 +4,6 @@
 
 <a href="javascript:history.back()" class="btn btn-secondary">Ortga qaytish</a>
 
-
 @if (Model.Pictures != null && Model.Pictures.Any())
 {
     <div class="gallery">
@@ -32,14 +31,14 @@ else
     }
 
     h2 {
-        color: #333; 
-        margin-bottom: 20px; 
+        color: #333;
+        margin-bottom: 20px;
     }
 
     .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px; 
+        gap: 15px;
         padding: 10px;
     }
 
@@ -51,7 +50,7 @@ else
     }
 
         .gallery-item:hover {
-            transform: translateY(-5px); 
+            transform: translateY(-5px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -59,7 +58,7 @@ else
         width: 100%;
         height: auto;
         display: block;
-        border-radius: 10px; 
+        border-radius: 10px;
         transition: transform 0.3s;
     }
 
@@ -68,40 +67,42 @@ else
         }
 
     .modal {
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         z-index: 1000;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8); 
-        padding: 20px; 
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
     }
 
     .modal-content {
-        max-width: 100%; 
-        max-height: 90vh; 
-        border-radius: 10px; 
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         object-fit: contain;
+    }
 
     .close {
         color: white;
         font-size: 40px;
         position: absolute;
-        top: 20px; 
-        right: 30px; 
+        top: 20px;
+        right: 30px;
         cursor: pointer;
-        transition: color 0.3s; 
-        z-index: 1001; 
+        transition: color 0.3s;
+        z-index: 1001;
     }
 
         .close:hover {
             color: #f00;
         }
+
 </style>
 
 <script>
@@ -109,12 +110,12 @@ else
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
 
-        modal.style.display = "flex"; 
-        modalImage.src = imageUrl; 
+        modal.style.display = "flex";
+        modalImage.src = imageUrl;
     }
 
     function closeModal() {
-        document.getElementById("imageModal").style.display = "none"; 
+        document.getElementById("imageModal").style.display = "none";
     }
 
     window.onclick = function(event) {

@@ -48,5 +48,20 @@ namespace RealNest.Web.Brokers.Storages
                 .ToListAsync();
         }
 
+        public async Task<List<House>> SelectHouseForBuyWithPicturesAsync()
+        {
+            return await this.Houses
+                .Include(h => h.Pictures)
+                .Where(h => h.ListingType == ListingType.ForSale) 
+                .ToListAsync();
+        }
+
+        public async Task<List<House>> SelectHouseForRentWithPicturesAsync()
+        {
+            return await this.Houses
+                .Include(h => h.Pictures)
+                .Where(h => h.ListingType == ListingType.ForRent)
+                .ToListAsync();
+        }
     }
 }
