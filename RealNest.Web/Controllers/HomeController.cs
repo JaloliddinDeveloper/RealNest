@@ -43,6 +43,20 @@ namespace RealNest.Web.Controllers
             return View(allHouses);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AllForBuyHouses()
+        {
+            var allHouses = await storageBroker.SelectHouseForBuyWithPicturesAsync();
+            return View(allHouses);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllForRentHouses()
+        {
+            var allHouses = await storageBroker.SelectHouseForRentWithPicturesAsync();
+            return View(allHouses);
+        }
+
         public async Task<IActionResult> Details(int id)
         {
             var house = await this.storageBroker.SelectHouseWithPictures(id);

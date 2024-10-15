@@ -20,5 +20,8 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId);
         Task<House> SelectHouseWithPictures(int houseId);
         Task<List<House>> SelectHousesWithPicturesAsync();
+
+        Task<List<House>> SelectHouseForBuyWithPicturesAsync();
+        Task<List<House>> SelectHouseForRentWithPicturesAsync();
     }
 }
