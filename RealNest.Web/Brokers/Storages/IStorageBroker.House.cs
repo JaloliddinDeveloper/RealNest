@@ -14,11 +14,11 @@ namespace RealNest.Web.Brokers.Storages
     {
         ValueTask<House> InsertHouseAsync(House house);
         ValueTask<IQueryable<House>> SelectAllHousesAsync();
-        ValueTask<House> SelectHouseByIdAsync(Guid houseId);
+        ValueTask<House> SelectHouseByIdAsync(int houseId);
         ValueTask<House> UpdateHouseAsync(House house);
         ValueTask<House> DeleteHouseAsync(House house);
         ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId);
-        Task<House> SelectHouseWithPictures(Guid houseId);
+        Task<House> SelectHouseWithPictures(int houseId);
         Task<List<House>> SelectHousesWithPicturesAsync();
     }
 }

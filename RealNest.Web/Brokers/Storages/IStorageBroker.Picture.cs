@@ -13,7 +13,7 @@ namespace RealNest.Web.Brokers.Storages
     {
         ValueTask<Picture> InsertPictureAsync(Picture picture);
         ValueTask<IQueryable<Picture>> SelectAllPicturesAsync();
-        ValueTask<Picture> SelectPictureByIdAsync(Guid pictureId);
+        ValueTask<Picture> SelectPictureByIdAsync(int pictureId);
         ValueTask<Picture> UpdatePictureAsync(Picture picture);
         ValueTask<Picture> DeletePictureAsync(Picture picture);
     }

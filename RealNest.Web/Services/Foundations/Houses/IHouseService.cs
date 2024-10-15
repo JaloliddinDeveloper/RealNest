@@ -14,8 +14,8 @@ namespace RealNest.Web.Services.Foundations.Houses
     {
         ValueTask<House> AddHouseAsync(House house);
        ValueTask<IQueryable<House>> RetrieveAllHousesAsync();
-        ValueTask<House> RetrieveHouseByIdAsync(Guid houseId);
+        ValueTask<House> RetrieveHouseByIdAsync(int houseId);
         ValueTask<House> ModifyHouseAsync(House house);
-        ValueTask<House> RemoveHouseAsync(Guid houseId);
+        ValueTask<House> RemoveHouseAsync(int houseId);
     }
 }

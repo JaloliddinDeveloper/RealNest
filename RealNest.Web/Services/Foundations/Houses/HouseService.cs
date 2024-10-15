@@ -23,7 +23,7 @@ namespace RealNest.Web.Services.Foundations.Houses
         public async ValueTask<IQueryable<House>> RetrieveAllHousesAsync() =>
            await this.storageBroker.SelectAllHousesAsync();
 
-        public async ValueTask<House> RetrieveHouseByIdAsync(Guid houseId) =>
+        public async ValueTask<House> RetrieveHouseByIdAsync(int houseId) =>
             await this.storageBroker.SelectHouseByIdAsync(houseId);
 
         public async ValueTask<House> ModifyHouseAsync(House house) =>
@@ -48,7 +48,7 @@ namespace RealNest.Web.Services.Foundations.Houses
             }
             throw new ArgumentException("House does not exist.");
         }
-        public async ValueTask<House> RemoveHouseAsync(Guid houseId)
+        public async ValueTask<House> RemoveHouseAsync(int houseId)
         {
             House maybeHouse = await this.storageBroker.SelectHouseByIdAsync(houseId);
             return await this.storageBroker.DeleteHouseAsync(maybeHouse);

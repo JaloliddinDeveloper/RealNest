@@ -20,7 +20,7 @@ namespace RealNest.Web.Brokers.Storages
         public async ValueTask<IQueryable<Picture>> SelectAllPicturesAsync()=>
             await SelectAllAsync<Picture>();
             
-        public async ValueTask<Picture> SelectPictureByIdAsync(Guid pictureId)=>
+        public async ValueTask<Picture> SelectPictureByIdAsync(int pictureId)=>
             await SelectAsync<Picture>(pictureId);
        
         public async ValueTask<Picture> UpdatePictureAsync(Picture picture)=>

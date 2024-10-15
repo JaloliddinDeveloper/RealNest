@@ -23,13 +23,13 @@ namespace RealNest.Web.Services.Foundations.Pictures
         public async ValueTask<IQueryable<Picture>> RetrieveAllPicturesAsync() =>
             await this.storageBroker.SelectAllPicturesAsync();
 
-        public async ValueTask<Picture> RetrievePictureByIdAsync(Guid pictureId) =>
+        public async ValueTask<Picture> RetrievePictureByIdAsync(int pictureId) =>
             await this.storageBroker.SelectPictureByIdAsync(pictureId);
 
         public async ValueTask<Picture> ModifyPictureAsync(Picture picture) =>
             await this.storageBroker.UpdatePictureAsync(picture);
 
-        public async ValueTask<Picture> RemovePictureAsync(Guid pictureId)
+        public async ValueTask<Picture> RemovePictureAsync(int pictureId)
         {
             Picture maybePicture =
                 await this.storageBroker.SelectPictureByIdAsync(pictureId);

@@ -90,7 +90,6 @@ namespace RealNest.Web.Controllers
 
                                 var picture = new Picture
                                 {
-                                    Id = Guid.NewGuid(),
                                     ImageUrl = "/imagens/" + uniqueFileName,
                                     HouseId = house.Id
                                 };
@@ -99,7 +98,6 @@ namespace RealNest.Web.Controllers
                             }
                         }
                     }
-
                     return RedirectToAction("HouseList", "House");
                 }
                 ModelState.AddModelError("", "Foydalanuvchi ma'lumotlari topilmadi.");
@@ -123,7 +121,7 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> HouseImages(Guid id)
+        public async Task<IActionResult> HouseImages(int id)
         {
             var house = await storageBroker.SelectHouseWithPictures(id);
 
@@ -135,7 +133,7 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public async ValueTask<IActionResult> EditHouse(Guid id)
+        public async ValueTask<IActionResult> EditHouse(int id)
         {
             string userIdString = HttpContext.Session.GetString("UserId");
 
@@ -186,7 +184,7 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmRemoveHouse(Guid id)
+        public async Task<IActionResult> ConfirmRemoveHouse(int id)
         {
             House houseToRemove = await storageBroker.SelectHouseByIdAsync(id);
 
@@ -199,7 +197,7 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveHouse(Guid id)
+        public async Task<IActionResult> RemoveHouse(int id)
         {
             var result = await this.houseService.RemoveHouseAsync(id);
 
