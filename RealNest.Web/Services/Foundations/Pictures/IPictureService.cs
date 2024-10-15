@@ -14,8 +14,8 @@ namespace RealNest.Web.Services.Foundations.Pictures
     {
         ValueTask<Picture> AddPictureAsync(Picture picture);
         ValueTask<IQueryable<Picture>> RetrieveAllPicturesAsync();
-        ValueTask<Picture> RetrievePictureByIdAsync(Guid pictureId);
+        ValueTask<Picture> RetrievePictureByIdAsync(int pictureId);
         ValueTask<Picture> ModifyPictureAsync(Picture picture);
-        ValueTask<Picture> RemovePictureAsync(Guid houseId);
+        ValueTask<Picture> RemovePictureAsync(int houseId);
     }
 }

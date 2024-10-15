@@ -29,7 +29,8 @@ namespace RealNest.Web.Migrations
                 name: "Houses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -57,9 +58,10 @@ namespace RealNest.Web.Migrations
                 name: "Pictures",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HouseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    HouseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

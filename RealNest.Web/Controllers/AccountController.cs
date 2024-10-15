@@ -30,7 +30,6 @@ namespace RealNest.Web.Controllers
         public IActionResult Register()=>
             View();
         
-
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

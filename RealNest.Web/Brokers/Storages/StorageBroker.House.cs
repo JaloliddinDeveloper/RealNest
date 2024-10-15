@@ -21,7 +21,7 @@ namespace RealNest.Web.Brokers.Storages
         public async ValueTask<IQueryable<House>> SelectAllHousesAsync() =>
            await SelectAllAsync<House>();
 
-        public async ValueTask<House> SelectHouseByIdAsync(Guid houseId) =>
+        public async ValueTask<House> SelectHouseByIdAsync(int houseId) =>
            await SelectAsync<House>(houseId);
 
         public async ValueTask<House> UpdateHouseAsync(House house) =>
@@ -35,7 +35,7 @@ namespace RealNest.Web.Brokers.Storages
             return userHouses.Where(h => h.UserId == userId);
         }
 
-        public async Task<House> SelectHouseWithPictures(Guid houseId)
+        public async Task<House> SelectHouseWithPictures(int houseId)
         {
             return await this.Houses
                 .Include(h => h.Pictures)
