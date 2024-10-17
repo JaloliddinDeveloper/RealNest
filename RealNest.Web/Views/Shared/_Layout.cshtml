@@ -171,11 +171,17 @@
                 </ul>
                 <div class="google-search-bar-wrapper">
                     <form class="d-flex justify-content-center" role="search" asp-controller="Home" asp-action="Search" method="get">
-                        <input class="google-search-input" type="search" name="query" placeholder="Search" aria-label="Search" value="@Context.Request.Query["query"]">
+                        <input class="google-search-input"
+                               type="search"
+                               name="searchInput"
+                               placeholder="Search"
+                               aria-label="Search"
+                               value="@Context.Request.Query["searchInput"]">
                         <button class="google-search-btn" type="submit">Search</button>
                     </form>
                 </div>
-                
+
+
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <form asp-action="Login" asp-controller="Account" method="get" class="d-inline">

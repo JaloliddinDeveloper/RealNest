@@ -63,5 +63,18 @@ namespace RealNest.Web.Brokers.Storages
                 .Where(h => h.ListingType == ListingType.ForRent)
                 .ToListAsync();
         }
+
+        public async Task<List<House>> SearchHousesAsync(string searchInput)
+        {
+            string searchPattern = "%" + searchInput + "%";
+
+            return await this.Houses
+                .Include(h => h.Pictures)
+                .Where(h => EF.Functions.Like(h.Title, searchPattern) ||
+                            EF.Functions.Like(h.Description, searchPattern) ||
+                            EF.Functions.Like(h.Address, searchPattern) ||
+                            EF.Functions.Like(h.Location, searchPattern))
+                .ToListAsync();
+        }
     }
 }
