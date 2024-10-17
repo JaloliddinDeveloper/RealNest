@@ -5,9 +5,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Brokers.Storages;
-using RealNest.Web.Models.Foundations.Houses;
-using RealNest.Web.Models.ViewModels;
-using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RealNest.Web.Controllers
@@ -67,9 +65,16 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> Search(string searchInput)
         {
-            return View();  
+            if (!string.IsNullOrWhiteSpace(searchInput))
+            {
+                var houses = await storageBroker.SearchHousesAsync(searchInput);
+                return View(houses);
+            }
+
+            var allHouses = await storageBroker.SelectHousesWithPicturesAsync();
+            return View(allHouses);
         }
     }
 }

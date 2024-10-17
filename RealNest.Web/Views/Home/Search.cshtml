@@ -1,1 +1,44 @@
-﻿<h3>Bu qism tez soatlarda tayyor bo'ladi.</h3>
+﻿@model List<House>
+
+@{
+    ViewData["Title"] = "House Search";
+}
+<h2>House Search Results</h2>
+<div class="row">
+    @foreach (var house in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (house.Pictures == null || !house.Pictures.Any())
+                {
+                    <img src="~/images/converted_image.png" class="card-img-top house-image" alt="No image available">
+                    <p>No pictures available for this house.</p>
+                }
+                else
+                {
+                    var firstPicture = house.Pictures.First();
+                    <img src="@Url.Content("~" + firstPicture.ImageUrl)" class="card-img-top house-image" alt="House image">
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@house.Title</h5>
+                    <p class="card-text">@house.Description</p>
+                    <p class="card-text"><strong>Narx:</strong> $@house.Price</p>
+                    <p class="card-text"><strong>Manzil:</strong> @house.Address</p>
+                    <p class="card-text"><strong>Joylashuv:</strong> @house.Location</p>
+                    <p class="card-text"><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
+                    <p class="card-text"><strong>ListingType:</strong> @house.ListingType</p>
+                    <p class="card-text"><strong>Contact:</strong> @house.ContactInformation</p>
+                    <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-primary">Batafsil</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    .house-image {
+        width:100%;
+        height: 200px; 
+        object-fit: cover;
+    }
+</style>
