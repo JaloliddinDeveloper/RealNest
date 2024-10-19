@@ -147,8 +147,6 @@ else
 
     function changeImage(step) {
         currentImageIndex += step;
-
-        // Wrap around if at the beginning or end of the array
         if (currentImageIndex < 0) {
             currentImageIndex = images.length - 1;
         } else if (currentImageIndex >= images.length) {
