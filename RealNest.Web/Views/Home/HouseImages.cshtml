@@ -2,22 +2,27 @@
 
 <h2>@Model.Title - Rasmlar</h2>
 
-<a href="javascript:history.back()" class="btn btn-secondary">Ortga qaytish</a>
+<a href="@Url.Action("HouseList", "House")" class="btn btn-secondary">Ortga qaytish</a>
 
 @if (Model.Pictures != null && Model.Pictures.Any())
 {
     <div class="gallery">
+        @{
+            var index = 0;
+        }
         @foreach (var picture in Model.Pictures)
         {
             <div class="gallery-item">
-                <img src="@picture.ImageUrl" alt="House Image" class="gallery-image" onclick="openModal('@picture.ImageUrl')" />
+                <img src="@picture.ImageUrl" alt="House Image" class="gallery-image" onclick="openModal(@(index))" />
             </div>
+            index++;
         }
     </div>
-
-    <div id="imageModal" class="modal" style="display:none;">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage" loading="lazy">
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span> 
+        <img class="modal-content" id="modalImage" loading="lazy"> 
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a> 
     </div>
 }
 else
@@ -67,7 +72,7 @@ else
         }
 
     .modal {
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         position: fixed;
@@ -76,52 +81,95 @@ else
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.9);
     }
 
     .modal-content {
-        max-width: 100%;
-        max-height: 90vh;
+        max-width: 90%;
+        max-height: 80%;
         border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         object-fit: contain;
+        transition: transform 0.3s ease-in-out;
     }
 
     .close {
-        color: white;
-        font-size: 40px;
         position: absolute;
         top: 20px;
         right: 30px;
+        color: white;
+        font-size: 40px;
         cursor: pointer;
-        transition: color 0.3s;
-        z-index: 1001;
     }
 
-        .close:hover {
-            color: #f00;
-        }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        font-size: 30px;
+        padding: 16px;
+        color: white;
+        transition: 0.3s;
+    }
 
+    .prev {
+        left: 20px;
+    }
+
+    .next {
+        right: 20px;
+    }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
 </style>
 
 <script>
-    function openModal(imageUrl) {
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
+    let currentImageIndex = 0;
+    const images = @Html.Raw(Json.Serialize(Model.Pictures.Select(p => p.ImageUrl).ToList()));
 
-        modal.style.display = "flex";
-        modalImage.src = imageUrl;
+    function openModal(index) {
+        currentImageIndex = index;
+        showImage(currentImageIndex);
+        document.getElementById("imageModal").style.display = "flex";
     }
 
     function closeModal() {
         document.getElementById("imageModal").style.display = "none";
     }
 
+    function showImage(index) {
+        const modalImage = document.getElementById("modalImage");
+        modalImage.src = images[index];
+    }
+
+    function changeImage(step) {
+        currentImageIndex += step;
+
+        if (currentImageIndex < 0) {
+            currentImageIndex = images.length - 1;
+        } else if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+        }
+
+        showImage(currentImageIndex);
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        } else if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+
     window.onclick = function(event) {
         const modal = document.getElementById("imageModal");
         if (event.target === modal) {
             closeModal();
         }
-    }
+    };
+
 </script>
