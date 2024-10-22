@@ -50,10 +50,10 @@ public class Program
 
         app.UseAuthorization();
         app.UseSession();
+
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
-
         app.Run();
     }
 }

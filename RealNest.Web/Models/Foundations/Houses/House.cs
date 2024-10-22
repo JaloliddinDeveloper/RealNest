@@ -22,7 +22,7 @@ namespace RealNest.Web.Models.Foundations.Houses
         public ListingType ListingType { get; set; }
         public string ContactInformation { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public Guid UserId { get; set; }
         [JsonIgnore]
         public User User { get; set; }
