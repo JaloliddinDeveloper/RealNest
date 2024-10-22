@@ -76,5 +76,13 @@ namespace RealNest.Web.Brokers.Storages
                             EF.Functions.Like(h.Location, searchPattern))
                 .ToListAsync();
         }
+
+        public async Task<List<House>> SelectNewHousesWithPicturesAsync()
+        {
+            return await this.Houses
+                .Include(h => h.Pictures)             
+                .Where(h => h.ExpirationDate > DateTime.Now) 
+                .ToListAsync();
+        }
     }
 }

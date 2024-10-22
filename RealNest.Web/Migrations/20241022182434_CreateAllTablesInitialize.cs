@@ -1,14 +1,15 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿//--------------------------------------------------
+// Copyright (c) Coalition Of Good-Hearted Engineers
+// Free To Use To Find Comfort And Peace
+//--------------------------------------------------
 
-#nullable disable
+using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RealNest.Web.Migrations
 {
-    /// <inheritdoc />
     public partial class CreateAllTablesInitialize : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -40,7 +41,7 @@ namespace RealNest.Web.Migrations
                     ListingType = table.Column<int>(type: "int", nullable: false),
                     ContactInformation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -85,7 +86,6 @@ namespace RealNest.Web.Migrations
                 column: "HouseId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

@@ -76,5 +76,11 @@ namespace RealNest.Web.Controllers
             var allHouses = await storageBroker.SelectHousesWithPicturesAsync();
             return View(allHouses);
         }
+
+        public async Task<IActionResult> New()
+        {
+            var houses = await storageBroker.SelectNewHousesWithPicturesAsync(); 
+            return View(houses);
+        }
     }
 }

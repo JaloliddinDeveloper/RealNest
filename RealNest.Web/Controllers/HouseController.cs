@@ -57,13 +57,12 @@ namespace RealNest.Web.Controllers
                         Address = model.Address,
                         Location = model.Location,
                         SquareFootage = model.SquareFootage,
-                        ListingType=model.ListingType,
-                        ContactInformation=model.ContactInformation,
+                        ListingType = model.ListingType,
+                        ContactInformation = model.ContactInformation,
                         CreatedDate = DateTime.Now,
-                        UpdatedDate = DateTime.Now,
+                        ExpirationDate = DateTime.Now.AddMonths(2),
                         UserId = userId
                     };
-
                     await this.storageBroker.InsertHouseAsync(house);
 
                     if (HouseImages != null && HouseImages.Any())
@@ -169,10 +168,10 @@ namespace RealNest.Web.Controllers
                         existingHouse.Description = house.Description;
                         existingHouse.Price = house.Price;
                         existingHouse.Address = house.Address;
-                        existingHouse.Location= house.Location;
+                        existingHouse.Location = house.Location;
                         existingHouse.SquareFootage = house.SquareFootage;
                         existingHouse.ListingType = house.ListingType;
-                        existingHouse.UpdatedDate=DateTime.Now;
+                        existingHouse.ExpirationDate = DateTime.Now.AddMonths(2);
                         await storageBroker.UpdateHouseAsync(existingHouse);
                         return RedirectToAction("HouseList");
                     }
