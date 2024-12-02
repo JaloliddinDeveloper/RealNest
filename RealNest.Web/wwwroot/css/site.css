@@ -16,7 +16,8 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #ccffcc;
+   
 }

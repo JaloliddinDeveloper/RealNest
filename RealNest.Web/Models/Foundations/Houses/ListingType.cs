@@ -6,7 +6,7 @@ namespace RealNest.Web.Models.Foundations.Houses
 {
     public enum ListingType
     {
-        ForSale,
-        ForRent
+        Sotish,
+        IjaragaBerish
     }
 }
