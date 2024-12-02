@@ -1,15 +1,14 @@
-﻿//--------------------------------------------------
-// Copyright (c) Coalition Of Good-Hearted Engineers
-// Free To Use To Find Comfort And Peace
-//--------------------------------------------------
-
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
 
 namespace RealNest.Web.Migrations
 {
+    /// <inheritdoc />
     public partial class CreateAllTablesInitialize : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -86,6 +85,7 @@ namespace RealNest.Web.Migrations
                 column: "HouseId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

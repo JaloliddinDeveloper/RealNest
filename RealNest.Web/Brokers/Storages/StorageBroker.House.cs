@@ -52,7 +52,7 @@ namespace RealNest.Web.Brokers.Storages
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => h.ListingType == ListingType.ForSale) 
+                .Where(h => h.ListingType == ListingType.Sotish) 
                 .ToListAsync();
         }
 
@@ -60,7 +60,7 @@ namespace RealNest.Web.Brokers.Storages
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => h.ListingType == ListingType.ForRent)
+                .Where(h => h.ListingType == ListingType.IjaragaBerish)
                 .ToListAsync();
         }
 

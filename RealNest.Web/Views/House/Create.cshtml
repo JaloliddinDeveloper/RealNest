@@ -9,43 +9,44 @@
 
 <form asp-action="Create" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm">
     <div class="form-group mb-3">
-        <label asp-for="Title" class="control-label"></label>
+        <label class="control-label">Uy nomi</label>
         <input asp-for="Title" class="form-control" required />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="Description" class="control-label"></label>
+        <label class="control-label">Uy haqida ma'limot</label>
         <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="Price" class="control-label"></label>
+        <label  class="control-label">Narxi</label>
         <input asp-for="Price" type="number" class="form-control" required />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="Address" class="control-label"></label>
+        <label  class="control-label">Manzil</label>
         <input asp-for="Address" class="form-control" required />
         <span asp-validation-for="Address" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="Location" class="control-label"></label>
+        <label class="control-label">Joylashuv</label>
         <input asp-for="Location" class="form-control" required />
         <span asp-validation-for="Location" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="SquareFootage" class="control-label"></label>
+        <label class="control-label">Maydoni (m²)</label>
         <input asp-for="SquareFootage" type="number" class="form-control" required />
         <span asp-validation-for="SquareFootage" class="text-danger"></span>
     </div>
 
+
     <div class="form-group mb-3">
-        <label asp-for="ListingType" class="control-label"></label>
+        <label class="control-label">Sotish/Elon berish</label>
         <select asp-for="ListingType" class="form-control" asp-items="Html.GetEnumSelectList<ListingType>()" required>
             <option value="">Iltimos tanlang</option>
         </select>
@@ -53,7 +54,7 @@
     </div>
 
     <div class="form-group mb-3">
-        <label asp-for="ContactInformation" class="control-label"></label>
+        <label class="control-label">Telefon Ramaingiz</label>
         <input asp-for="ContactInformation" class="form-control" required />
         <span asp-validation-for="ContactInformation" class="text-danger"></span>
     </div>

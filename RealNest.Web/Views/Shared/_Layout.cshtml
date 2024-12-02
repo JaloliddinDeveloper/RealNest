@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RealNest.Web</title>
+    <title>@ViewData["Title"]RealNest.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RealNest.Web.styles.css" asp-append-version="true" />
@@ -67,8 +67,8 @@
             }
 
         .google-search-input {
-            height: 45px;
-            width: 400px;
+            height: 35px;
+            width: 250px;
             max-width: 100%;
             border-radius: 25px 0 0 25px;
             border: 1px solid #ddd;
@@ -86,7 +86,7 @@
             }
 
         .google-search-btn {
-            height: 45px;
+            height: 35px;
             border-radius: 0 25px 25px 0;
             font-size: 18px;
             background-color: #4285f4;
@@ -147,7 +147,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/images/converted_image.png" alt="RealNest Logo" />
+                <img src="~/images/logoLogo.jpg" alt="RealNest Logo" />
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,23 +157,23 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Bosh sahifa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="New">New</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="New">Yangi Uylar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllForBuyHouses">Buy</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllForBuyHouses">Sotib olish</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllForRentHouses">Rent</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllForRentHouses">Ijaraga berish</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllHouses">AllHouses</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllHouses">Barcha uylar</a>
                     </li>
                    
                 </ul>
-                <div class="google-search-bar-wrapper">
+               <div class="google-search-bar-wrapper">
                     <form class="d-flex justify-content-center" role="search" asp-controller="Home" asp-action="Search" method="get">
                         <input class="google-search-input"
                                type="search"
@@ -183,20 +183,19 @@
                                value="@Context.Request.Query["searchInput"]">
                         <button class="google-search-btn" type="submit">Search</button>
                     </form>
-                </div>
-
+                </div> 
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <form asp-action="Login" asp-controller="Account" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-outline-primary me-2">Sign In</button>
+                            <button type="submit" class="btn btn-outline-primary me-2">Kirish</button>
                         </form>
                     </li>
-                    <li class="nav-item">
+                   @*  <li class="nav-item">
                         <form asp-action="Register" asp-controller="Account" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-outline-primary me-2">Sign Up</button>
+                            <button type="submit" class="btn btn-outline-primary me-2">A’zo</button>
                         </form>
-                    </li>
+                    </li> *@
                 </ul>
             </div>
         </nav>
