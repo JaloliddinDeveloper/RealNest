@@ -9,6 +9,9 @@ namespace RealNest.Web.Brokers.Storages
         public async ValueTask<Admin> InsertAdminAsync(Admin admin)=>
             await InsertAsync(admin);
 
+        public async ValueTask<Admin> DeleteAdminAsync(Admin admin)=>
+            await DeleteAsync(admin);
+
         public async ValueTask<Admin> SelectAdminByEmailAsync(string adminName)
         {
             using var broker = new StorageBroker(this.configuration);

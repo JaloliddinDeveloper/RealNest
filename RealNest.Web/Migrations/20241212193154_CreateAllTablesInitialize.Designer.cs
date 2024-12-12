@@ -12,7 +12,7 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241207102954_CreateAllTablesInitialize")]
+    [Migration("20241212193154_CreateAllTablesInitialize")]
     partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
@@ -24,6 +24,25 @@ namespace RealNest.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("RealNest.Web.Models.Foundations.Admins.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdminName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admins");
+                });
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Houses.House", b =>
                 {

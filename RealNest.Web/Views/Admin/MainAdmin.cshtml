@@ -1,1 +1,53 @@
-﻿<h1>Admin Panelga Hush kelibsiz.</h1>
+﻿@model List<House>
+
+@{
+    ViewData["Title"] = "House List";
+}
+
+<h2 class="text-center">All Houses</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Address</th>
+            <th>Location</th>
+            <th>Square Footage</th>
+            <th>Contact Information</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var house in Model)
+        {
+            <tr>
+                <td>@house.Title</td>
+                <td>@house.Description</td>
+                <td>@house.Price.ToString("C")</td>
+                <td>@house.Address</td>
+                <td>@house.Location</td>
+                <td>@house.SquareFootage</td>
+                <td>@house.ContactInformation</td>
+                <td>
+                    <a asp-action="AdminDetails" asp-controller="Admin" asp-route-id="@house.Id" class="btn btn-primary">Batafsil</a>
+                </td>
+                <td>
+                    <form asp-controller="Admin" asp-action="MarkAsValable" method="post">
+                        <input type="hidden" name="id" value="@house.Id" />
+                        <button type="submit" class="btn btn-success"
+                        @(house.IsValable ? "disabled" : "")>
+                            Yaroqli
+                        </button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
