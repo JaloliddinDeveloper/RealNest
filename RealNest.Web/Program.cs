@@ -55,7 +55,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Account}/{action=LoginAdmin}/{id?}");
+            pattern: "{controller=Account}/{action=AdminRegister}/{id?}");
         app.Run();
     }
 }

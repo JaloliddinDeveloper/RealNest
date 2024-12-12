@@ -10,3 +10,4 @@ namespace RealNest.Web.Models.Foundations.Houses
         IjaragaBerish
     }
 }
+
