@@ -41,7 +41,8 @@ namespace RealNest.Web.Migrations
                     ContactInformation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsValable = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -15,10 +15,17 @@
         <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Parolni kiriting" required />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
+
     <button type="submit" class="btn btn-primary w-100">Tizimga kirish</button>
+
     <div class="text-center mt-3">
         <a asp-controller="Account" asp-action="Register" class="text-decoration-none"><b>Ro'yxatdan o'tish</b></a>
     </div>
+
+    <div class="text-center mt-3">
+        <a asp-controller="Admin" asp-action="AdminLogin" class="btn btn-secondary w-100">Admin</a>
+    </div>
+
 </form>
 
 @section Scripts {

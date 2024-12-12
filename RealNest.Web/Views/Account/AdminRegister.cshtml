@@ -1,0 +1,40 @@
+﻿
+@model AdminViewModelRegister
+
+@{
+    ViewData["Title"] = "Admin Ro'yxatdan O'tish";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="AdminRegister" method="post">
+    <div class="form-group">
+        <label asp-for="AdminName"></label>
+        <input asp-for="AdminName" class="form-control" />
+        <span asp-validation-for="AdminName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ro'yxatdan O'tish</button>
+</form>
+
+<div>
+    <a asp-action="Login">Kirish</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

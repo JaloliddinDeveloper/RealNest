@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RealNest.Web.Brokers.Storages;
+using RealNest.Web.Models.Foundations.Admins;
 using RealNest.Web.Models.Foundations.Users;
 using RealNest.Web.Services.Foundations.Houses;
 using System;
@@ -32,6 +33,7 @@ public class Program
         builder.Services.AddSession();
         builder.Services.AddAuthorization();
         builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+        builder.Services.AddScoped<IPasswordHasher<Admin>, PasswordHasher<Admin>>();
 
         var app = builder.Build();
 

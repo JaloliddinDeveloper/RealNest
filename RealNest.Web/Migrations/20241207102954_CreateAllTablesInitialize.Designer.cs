@@ -12,7 +12,7 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241202180208_CreateAllTablesInitialize")]
+    [Migration("20241207102954_CreateAllTablesInitialize")]
     partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
@@ -47,6 +47,9 @@ namespace RealNest.Web.Migrations
 
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsValable")
+                        .HasColumnType("bit");
 
                     b.Property<int>("ListingType")
                         .HasColumnType("int");
