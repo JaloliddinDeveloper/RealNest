@@ -101,5 +101,31 @@ namespace RealNest.Web.Controllers
             }
             return View(model);
         }
+
+        //AdminLogin
+        [HttpGet]
+        public IActionResult LoginAdmin() =>
+            View();
+
+        [HttpPost]
+        public async Task<IActionResult> LoginAdmin(AdminLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var admin = await this.storageBroker.SelectAdminByEmailAsync(model.AdminName);
+
+                if (admin != null)
+                {
+                    var result = this.passwordHasherAdmin.VerifyHashedPassword(admin, admin.Password, model.Password);
+
+                    if (result == PasswordVerificationResult.Success)
+                    {
+                        return RedirectToAction("MainAdmin", "Admin");
+                    }
+                }
+                ModelState.AddModelError("", "Login yoki parol xato.");
+            }
+            return View(model);
+        }
     }
 }
