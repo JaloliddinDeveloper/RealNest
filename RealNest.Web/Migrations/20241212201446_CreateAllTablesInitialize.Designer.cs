@@ -12,7 +12,7 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241212193154_CreateAllTablesInitialize")]
+    [Migration("20241212201446_CreateAllTablesInitialize")]
     partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
