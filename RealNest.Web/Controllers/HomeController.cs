@@ -4,6 +4,9 @@
 //--------------------------------------------------
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
+using RealNest.Web.Models.Foundations.Houses;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -69,17 +72,38 @@ namespace RealNest.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Search(string searchInput)
         {
-            if (!string.IsNullOrWhiteSpace(searchInput))
+            try
             {
-                var houses = await storageBroker.SearchHousesAsync(searchInput);
-                var validHouses = houses.Where(h => h.IsValable);
+                List<House> validHouses;
+
+                if (!string.IsNullOrWhiteSpace(searchInput))
+                {
+                    var houses = await storageBroker.SearchHousesAsync(searchInput);
+                    validHouses = houses.Where(h => h.IsValable).ToList();
+                }
+                else
+                {
+                    var allHouses = await storageBroker.SelectHousesWithPicturesAsync();
+                    validHouses = allHouses.Where(h => h.IsValable).ToList();
+                }
+
+                if (!validHouses.Any())
+                {
+                    ViewBag.Message = "Uy topilmadi";
+                }
+
                 return View(validHouses);
             }
-
-            var allHouses = await storageBroker.SelectHousesWithPicturesAsync();
-            var validAllHouses = allHouses.Where(h => h.IsValable);
-            return View(validAllHouses);
+            catch (Exception ex)
+            {
+                // Xatolikni log fayliga yozish yoki boshqarish
+                ViewBag.ErrorMessage = "Qidiruv jarayonida xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.";
+                return View(new List<House>());
+            }
         }
+
+
+
 
         public async Task<IActionResult> New()
         {
