@@ -24,6 +24,7 @@ namespace RealNest.Web.Models.Foundations.Houses
         public DateTime CreatedDate { get; set; }
         public DateTime ExpirationDate { get; set; }
         public Guid UserId { get; set; }
+        public bool IsValable { get; set; }
         [JsonIgnore]
         public User User { get; set; }
         public IEnumerable<Picture> Pictures { get; set; }

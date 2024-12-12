@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using RealNest.Web.Models.Foundations.Admins;
 using RealNest.Web.Models.Foundations.Houses;
 using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.Foundations.Users;
@@ -68,6 +69,8 @@ namespace RealNest.Web.Brokers.Storages
             this.Entry(@object).State = EntityState.Detached;
         }
         public override void Dispose() { }
+
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
