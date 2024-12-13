@@ -92,6 +92,31 @@ namespace RealNest.Web.Migrations
                     b.ToTable("Houses");
                 });
 
+            modelBuilder.Entity("RealNest.Web.Models.Foundations.Newss.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewsPicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Newss");
+                });
+
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Pictures.Picture", b =>
                 {
                     b.Property<int>("Id")

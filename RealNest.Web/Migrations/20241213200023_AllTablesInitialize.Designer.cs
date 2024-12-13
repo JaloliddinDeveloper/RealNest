@@ -12,8 +12,8 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241212201446_CreateAllTablesInitialize")]
-    partial class CreateAllTablesInitialize
+    [Migration("20241213200023_AllTablesInitialize")]
+    partial class AllTablesInitialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,6 +93,31 @@ namespace RealNest.Web.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Houses");
+                });
+
+            modelBuilder.Entity("RealNest.Web.Models.Foundations.Newss.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewsPicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Newss");
                 });
 
             modelBuilder.Entity("RealNest.Web.Models.Foundations.Pictures.Picture", b =>

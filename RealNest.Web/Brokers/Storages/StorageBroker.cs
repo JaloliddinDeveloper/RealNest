@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RealNest.Web.Models.Foundations.Admins;
 using RealNest.Web.Models.Foundations.Houses;
-using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.Foundations.Users;
 using System.Linq;
 using System.Threading.Tasks;

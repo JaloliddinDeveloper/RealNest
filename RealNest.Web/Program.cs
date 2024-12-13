@@ -20,6 +20,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllersWithViews();
+
         builder.Services.AddSession(options =>
         {
             options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -55,7 +56,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Account}/{action=AdminRegister}/{id?}");
+            pattern: "{controller=Home}/{action=Index}/{id?}");
         app.Run();
     }
 }
