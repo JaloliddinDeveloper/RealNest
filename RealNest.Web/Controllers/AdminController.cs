@@ -1,26 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
+using RealNest.Web.Models.Foundations.Newss;
 using RealNest.Web.Services.Foundations.Houses;
+using System;
+using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace RealNest.Web.Controllers
 {
-    public class AdminController:Controller
+    public class AdminController : Controller
     {
+        private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IStorageBroker storageBroker;
         private readonly IHouseService houseService;
 
         public AdminController(
+            IWebHostEnvironment webHostEnvironment,
             IStorageBroker storageBroker,
             IHouseService houseService)
         {
+            this.webHostEnvironment = webHostEnvironment;
             this.storageBroker = storageBroker;
             this.houseService = houseService;
         }
 
-       
         [HttpGet]
         public async ValueTask<IActionResult> MainAdmin()
         {
@@ -62,6 +70,107 @@ namespace RealNest.Web.Controllers
             var house = await storageBroker.SelectHouseWithPictures(id);
 
             return View(house);
+        }
+        //----------------------//
+        [HttpGet]
+        public async ValueTask<IActionResult> BlogAdmin()
+        {
+            var blogs = await this.storageBroker.SelectAllNewssAsync();
+            return View(blogs);
+        }
+
+
+        public IActionResult BlogAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> BlogAdd([FromForm] News blog, IFormFile picture)
+        {
+            if (picture != null)
+            {
+                string uploadsFolder = Path.Combine(this.webHostEnvironment.WebRootPath, "imagess");
+                Directory.CreateDirectory(uploadsFolder);
+
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(picture.FileName);
+                string filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await picture.CopyToAsync(fileStream);
+                }
+
+                blog.NewsPicture = $"Imagess/{fileName}";
+                blog.CreatedDate= DateTime.Now;
+            }
+
+           await this.storageBroker.InsertNewsAsync(blog);
+            return RedirectToAction("BlogAdmin");
+        }
+
+        public async ValueTask<IActionResult> BlogEdit(int id)
+        {
+            var blog = await this.storageBroker.SelectNewsByIdAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog);
+        }
+
+        [HttpPost]
+        public async ValueTask<IActionResult> BlogEdit(int id, News news, IFormFile NewPicture)
+        {
+            if (id != news.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (NewPicture != null && NewPicture.Length > 0)
+                {
+                    // Save the new picture logic
+                    string newFileName = $"{Guid.NewGuid()}_{NewPicture.FileName}";
+                    string filePath = Path.Combine("wwwroot/imagess", newFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await NewPicture.CopyToAsync(stream);
+                    }
+
+                    // Update the NewsPicture property
+                    news.NewsPicture = $"Imagess/{newFileName}";
+
+                }
+                await this.storageBroker.UpdateNewsAsync(news);
+                return RedirectToAction("BlogAdmin");
+            }
+            return View(news);
+        }
+
+        public async ValueTask<IActionResult> BlogDelete(int id)
+        {
+            var blog = await this.storageBroker.SelectNewsByIdAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog);
+        }
+
+        [HttpPost]
+        public async ValueTask<IActionResult> DeleteConfirmed(int id)
+        {
+            var news = await storageBroker.SelectNewsByIdAsync(id);
+            if (news == null)
+            {
+                return NotFound();
+            }
+
+            await storageBroker.DeleteNewsAsync(news);
+            return RedirectToAction("BlogAdmin");
         }
     }
 }

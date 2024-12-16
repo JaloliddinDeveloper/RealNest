@@ -9,19 +9,19 @@ namespace RealNest.Web.Brokers.Storages
     {
         public DbSet<News> Newss { get; set; }
 
-        public async ValueTask<News> InsertNewsAsync(News News) =>
-            await InsertAsync(News);
+        public async ValueTask<News> InsertNewsAsync(News news) =>
+            await InsertAsync(news);
 
         public async ValueTask<IQueryable<News>> SelectAllNewssAsync() =>
             await SelectAllAsync<News>();
 
-        public async ValueTask<News> SelectNewsByIdAsync(int NewsId) =>
-            await SelectAsync<News>(NewsId);
+        public async ValueTask<News> SelectNewsByIdAsync(int newsId) =>
+            await SelectAsync<News>(newsId);
 
-        public async ValueTask<News> UpdateNewsAsync(News News) =>
-            await UpdateAsync(News);
+        public async ValueTask<News> UpdateNewsAsync(News news) =>
+            await UpdateAsync(news);
 
-        public async ValueTask<News> DeleteNewsAsync(News News) =>
-            await DeleteAsync(News);
+        public async ValueTask<News> DeleteNewsAsync(News news) =>
+            await DeleteAsync(news);
     }
 }

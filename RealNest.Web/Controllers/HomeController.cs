@@ -3,8 +3,10 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
+using RealNest.Web.Models.Foundations.Newss;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,13 +104,45 @@ namespace RealNest.Web.Controllers
             }
         }
 
-
-
-
         public async Task<IActionResult> New()
         {
             var houses = await storageBroker.SelectNewHousesWithPicturesAsync();
             var validHouses = houses.Where(h => h.IsValable);
+            return View(validHouses);
+        }
+
+        [HttpGet]
+        public async ValueTask<IActionResult> Newss()
+        {
+            var newss = await this.storageBroker.SelectAllNewssAsync();
+            return View(newss);
+        }
+
+
+        public async ValueTask<IActionResult> NewssDet(int id)
+        {
+            var blog =await this.storageBroker.SelectNewsByIdAsync(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog); 
+        }
+
+
+        [HttpGet]
+        public async ValueTask<IActionResult> NewssSotish()
+        {
+            var newsotish = await this.storageBroker.GetExpiredHousesSotishWithPicturesAsync();
+            var validHouses = newsotish.Where(h => h.IsValable);
+            return View(validHouses);
+        }
+
+        [HttpGet]
+        public async ValueTask<IActionResult> NewssIjaragaBerish()
+        {
+            var newsotish = await this.storageBroker.GetExpiredHousesIjaragaBerishWithPicturesAsync();
+            var validHouses = newsotish.Where(h => h.IsValable);
             return View(validHouses);
         }
     }

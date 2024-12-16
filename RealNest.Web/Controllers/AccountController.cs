@@ -32,9 +32,9 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()=>
+        public IActionResult Register() =>
             View();
-        
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -54,9 +54,9 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()=>
+        public IActionResult Login() =>
             View();
-        
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -120,7 +120,7 @@ namespace RealNest.Web.Controllers
 
                     if (result == PasswordVerificationResult.Success)
                     {
-                        return RedirectToAction("MainAdmin", "Admin");
+                        return RedirectToAction("EnterAdmin", "Account");
                     }
                 }
                 ModelState.AddModelError("", "Login yoki parol xato.");
@@ -128,6 +128,9 @@ namespace RealNest.Web.Controllers
             return View(model);
         }
 
-      
+        public IActionResult EnterAdmin()
+        {
+            return View();
+        }
     }
 }

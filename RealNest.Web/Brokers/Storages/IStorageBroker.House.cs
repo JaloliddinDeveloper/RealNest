@@ -25,5 +25,9 @@ namespace RealNest.Web.Brokers.Storages
         Task<List<House>> SelectHouseForRentWithPicturesAsync();
         Task<List<House>> SearchHousesAsync(string searchInput);
         Task<List<House>> SelectNewHousesWithPicturesAsync();
+
+        Task<List<House>> GetExpiredHousesIjaragaBerishWithPicturesAsync();
+        Task<List<House>> GetExpiredHousesSotishWithPicturesAsync();
+
     }
 }
