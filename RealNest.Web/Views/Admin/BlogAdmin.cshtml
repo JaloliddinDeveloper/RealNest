@@ -1,0 +1,85 @@
+﻿@model IQueryable<News>
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .blog-card {
+            width: 300px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        .blog-text {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+            .action-btn:hover {
+                background-color: #45a049;
+            }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+            .delete-btn:hover {
+                background-color: #e53935;
+            }
+
+    </style>
+</head>
+<body>
+    <a asp-controller="Admin" asp-action="BlogAdd" class="action-btn">Blog qo'shish</a>
+
+    <div class="blog-container">
+        @foreach (var blog in Model)
+        {
+            <div class="blog-card">
+                <img src="~/@blog.NewsPicture" alt="Blog Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">@blog.Title</h2>
+                    <p class="blog-text">@blog.Description</p>
+
+                    <a asp-controller="Admin" asp-action="BlogEdit" asp-route-id="@blog.Id" class="action-btn">Update</a>
+                    <a asp-controller="Admin" asp-action="BlogDelete" asp-route-id="@blog.Id" class="action-btn delete-btn">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

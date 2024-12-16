@@ -1,0 +1,90 @@
+﻿@model IQueryable<News>
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <!-- Add Bootstrap CDN link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        .blog-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        .blog-text {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+            .action-btn:hover {
+                background-color: #45a049;
+            }
+
+        .delete-btn {
+            background-color: #f44336;
+        }
+
+            .delete-btn:hover {
+                background-color: #e53935;
+            }
+            .hh
+            {
+                
+            }
+    </style>
+</head>
+<body>
+    <h1 class="hh" style="text-align: center;">Yangiliklar</h1>
+
+    <div class="container mt-4">
+
+        <div class="row">
+            @foreach (var blog in Model)
+            {
+                <div class="col-md-4">
+                    <div class="blog-card">
+                        <img src="~/@blog.NewsPicture" alt="Blog Image" class="blog-image">
+                        <div class="blog-content">
+                            <h2 class="blog-title">@blog.Title</h2>
+                            <p class="blog-text">@blog.Description</p>
+                            <a href="@Url.Action("NewssDet", "Home", new { id = blog.Id })" class="action-btn">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

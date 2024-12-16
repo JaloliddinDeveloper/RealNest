@@ -84,5 +84,26 @@ namespace RealNest.Web.Brokers.Storages
                 .Where(h => h.ExpirationDate > DateTime.Now) 
                 .ToListAsync();
         }
+
+
+
+
+        public async Task<List<House>> GetExpiredHousesIjaragaBerishWithPicturesAsync()
+        {
+            return await this.Houses
+                .Include(h => h.Pictures) // Include related pictures
+                .Where(h => h.ExpirationDate <= DateTime.Now && h.ListingType == ListingType.IjaragaBerish) // Filter by expiration and ListingType IjaragaBerish
+                .ToListAsync(); // Convert the result to a list
+        }
+
+
+        public async Task<List<House>> GetExpiredHousesSotishWithPicturesAsync()
+        {
+            return await this.Houses
+                .Include(h => h.Pictures) // Include related pictures
+                .Where(h => h.ExpirationDate <= DateTime.Now && h.ListingType == ListingType.Sotish) // Filter by expiration and ListingType IjaragaBerish
+                .ToListAsync(); // Convert the result to a list
+        }
+
     }
 }

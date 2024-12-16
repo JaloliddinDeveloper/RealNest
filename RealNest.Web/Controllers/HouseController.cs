@@ -60,7 +60,7 @@ namespace RealNest.Web.Controllers
                         ListingType = model.ListingType,
                         ContactInformation = model.ContactInformation,
                         CreatedDate = DateTime.Now,
-                        ExpirationDate = DateTime.Now.AddMonths(2),
+                        ExpirationDate = DateTime.Today.AddHours(12),
                         UserId = userId
                     };
                     await this.storageBroker.InsertHouseAsync(house);

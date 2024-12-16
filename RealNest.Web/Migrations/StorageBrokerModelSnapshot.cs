@@ -100,9 +100,6 @@ namespace RealNest.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
