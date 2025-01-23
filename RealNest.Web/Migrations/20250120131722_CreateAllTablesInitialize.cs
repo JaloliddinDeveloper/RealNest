@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RealNest.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class OneMigrate : Migration
+    public partial class CreateAllTablesInitialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

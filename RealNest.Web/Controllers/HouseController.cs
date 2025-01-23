@@ -171,7 +171,7 @@ namespace RealNest.Web.Controllers
                         existingHouse.Location = house.Location;
                         existingHouse.SquareFootage = house.SquareFootage;
                         existingHouse.ListingType = house.ListingType;
-                        existingHouse.ExpirationDate = DateTime.Now.AddMonths(2);
+                        existingHouse.ExpirationDate = DateTime.Now.AddHours(12);
                         await storageBroker.UpdateHouseAsync(existingHouse);
                         return RedirectToAction("HouseList");
                     }

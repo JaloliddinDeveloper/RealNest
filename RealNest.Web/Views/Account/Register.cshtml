@@ -20,8 +20,9 @@
     </div>
     <div class="form-group mb-4">
         <label for="confirmPassword" class="form-label">Parolni tasdiqlang</label>
-
+        <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Parolni tasdiqlang" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
+
     <button type="submit" class="btn btn-primary w-100">Ro'yxatdan o'tish</button>
 </form>
