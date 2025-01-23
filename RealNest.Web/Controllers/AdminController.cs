@@ -8,7 +8,6 @@ using RealNest.Web.Services.Foundations.Houses;
 using System;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace RealNest.Web.Controllers
@@ -131,7 +130,6 @@ namespace RealNest.Web.Controllers
             {
                 if (NewPicture != null && NewPicture.Length > 0)
                 {
-                    // Save the new picture logic
                     string newFileName = $"{Guid.NewGuid()}_{NewPicture.FileName}";
                     string filePath = Path.Combine("wwwroot/imagess", newFileName);
 
@@ -140,7 +138,6 @@ namespace RealNest.Web.Controllers
                         await NewPicture.CopyToAsync(stream);
                     }
 
-                    // Update the NewsPicture property
                     news.NewsPicture = $"Imagess/{newFileName}";
 
                 }

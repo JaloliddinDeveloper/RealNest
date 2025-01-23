@@ -12,8 +12,8 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20241216170102_OneMigrate")]
-    partial class OneMigrate
+    [Migration("20250123181553_CreateAllTablesInitialize")]
+    partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
