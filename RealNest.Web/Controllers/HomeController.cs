@@ -3,10 +3,8 @@
 // Free To Use To Find Comfort And Peace
 //--------------------------------------------------
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
-using RealNest.Web.Models.Foundations.Newss;
 using System;
 using System.Collections.Generic;
 using System.Linq;

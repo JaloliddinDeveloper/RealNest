@@ -73,7 +73,7 @@ namespace RealNest.Web.Controllers
                             {
                                 var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(image.FileName);
 
-                                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens");
+                                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagess");
 
                                 if (!Directory.Exists(uploadsFolder))
                                 {
@@ -89,7 +89,7 @@ namespace RealNest.Web.Controllers
 
                                 var picture = new Picture
                                 {
-                                    ImageUrl = "/imagens/" + uniqueFileName,
+                                    ImageUrl = "/imagess/" + uniqueFileName,
                                     HouseId = house.Id
                                 };
 
