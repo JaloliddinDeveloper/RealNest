@@ -1,4 +1,5 @@
-﻿<h2 class="text-center mt-4">Uy Ma'lumotlari</h2>
+﻿@model House
+<h2 class="text-center mt-4">Uy Ma'lumotlari</h2>
 
 <div class="card house-card mt-4 mx-auto">
     @if (Model.Pictures == null || !Model.Pictures.Any())
@@ -18,7 +19,7 @@
 
         <div class="row info-section">
             <div class="col-md-6">
-                <p class="card-text"><strong>Narx:</strong> $@Model.Price</p>
+                <p class="card-text"><strong>Narx:</strong> @($"${Model.Price:F2}")</p>
                 <p class="card-text"><strong>Manzil:</strong> @Model.Address</p>
                 <p class="card-text"><strong>Joylashuv:</strong> @Model.Location</p>
             </div>

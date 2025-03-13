@@ -2,7 +2,8 @@
 
 <h2>@Model.Title - Rasmlar</h2>
 
-<a href="@Url.Action("HouseList", "House")" class="btn btn-secondary">Ortga qaytish</a>
+<a href="javascript:history.back()" class="btn btn-secondary">Ortga qaytish</a>
+
 
 @if (Model.Pictures != null && Model.Pictures.Any())
 {

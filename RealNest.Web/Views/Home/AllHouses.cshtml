@@ -1,4 +1,4 @@
-﻿@model IEnumerable<House>
+﻿@model List<House>
 
 <h2 class="text-center mt-4">Barcha Uylar</h2>
 
@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@house.Title</h5>
                     <p class="card-text">@house.Description</p>
-                    <p class="card-text"><strong>Narx:</strong> $@house.Price</p>
+                    <p class="card-text"><strong>Narx:</strong> $@house.Price.ToString("F2")</p>
                     <p class="card-text"><strong>Manzil:</strong> @house.Address</p>
                     <p class="card-text"><strong>Joylashuv:</strong> @house.Location</p>
                     <p class="card-text"><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>

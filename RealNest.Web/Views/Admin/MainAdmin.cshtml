@@ -25,7 +25,7 @@
             <tr>
                 <td>@house.Title</td>
                 <td>@house.Description</td>
-                <td>@house.Price.ToString("C")</td>
+                <td>@($"${house.Price:F2}")</td>
                 <td>@house.Address</td>
                 <td>@house.Location</td>
                 <td>@house.SquareFootage</td>
@@ -42,9 +42,9 @@
                         </button>
                     </form>
                 </td>
-
             </tr>
         }
+
     </tbody>
 </table>
 
