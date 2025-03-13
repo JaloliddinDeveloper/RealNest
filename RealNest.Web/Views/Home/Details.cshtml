@@ -1,8 +1,6 @@
-﻿@model House
+﻿<h2 class="text-center mt-4">Uy Ma'lumotlari</h2>
 
-<h2 class="text-center mt-4">Uy Ma'lumotlari</h2>
-
-<div class="card shadow-lg mt-4 mx-auto" style="max-width: 900px;">
+<div class="card house-card mt-4 mx-auto">
     @if (Model.Pictures == null || !Model.Pictures.Any())
     {
         <img src="~/images/converted_image.png" class="card-img-top house-image" alt="No image available">
@@ -16,9 +14,9 @@
 
     <div class="card-body">
         <h4 class="card-title">@Model.Title</h4>
-        <p class="card-text text-muted">@Model.Description</p>
+        <p class="card-text description">@Model.Description</p>
 
-        <div class="row mb-3">
+        <div class="row info-section">
             <div class="col-md-6">
                 <p class="card-text"><strong>Narx:</strong> $@Model.Price</p>
                 <p class="card-text"><strong>Manzil:</strong> @Model.Address</p>
@@ -27,42 +25,98 @@
             <div class="col-md-6">
                 <p class="card-text"><strong>Maydoni:</strong> @Model.SquareFootage kv.m</p>
                 <p class="card-text"><strong>Listing turi:</strong> @Model.ListingType</p>
-                <p class="card-text"><strong>Kontakt ma'lumotlari:</strong> @Model.ContactInformation</p>
+                <p class="card-text"><strong>Kontakt:</strong> @Model.ContactInformation</p>
             </div>
         </div>
 
-        <a asp-action="HouseImages" asp-controller="Home" asp-route-id="@Model.Id" class="btn btn-info btn-block mt-3">Rasmlarni Ko'rish</a>
+        <a asp-action="HouseImages" asp-controller="Home" asp-route-id="@Model.Id" class="btn btn-gradient">Rasmlarni Ko'rish</a>
     </div>
 </div>
 
 <style>
-    .house-image {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-    }
-
-    .card {
-        border-radius: 15px;
-        overflow: hidden;
-    }
-
-    .card-body {
-        padding: 20px;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-        font-weight: bold;
+    /* Global settings */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
         color: #333;
     }
 
-    .card-text {
-        font-size: 1rem;
-        line-height: 1.5;
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4CAF50;
+        margin-bottom: 30px;
     }
 
-    .btn-block {
-        width: 100%;
+    /* Card settings */
+    .house-card {
+        max-width: 800px;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+    /* House image */
+    .house-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+        .house-image:hover {
+            transform: scale(1.05);
+        }
+
+    /* Card body settings */
+    .card-body {
+        padding: 24px;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #212121;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        font-size: 1rem;
+        color: #757575;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .info-section {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* Button settings */
+    .btn-gradient {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #4CAF50, #2196F3);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border: none;
+        text-align: center;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #43A047, #1976D2);
+            transform: scale(1.05);
+        }
 </style>

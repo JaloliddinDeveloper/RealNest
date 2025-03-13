@@ -4,29 +4,83 @@
     ViewData["Title"] = "Add Blog";
 }
 
-<h2>Add Blog</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 class="mb-0">Add Blog</h2>
+        </div>
+        <div class="card-body p-4">
+            <form asp-controller="Admin" asp-action="BlogAdd" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-bold">Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="Enter blog title" required />
+                    <div class="invalid-feedback">
+                        Please provide a blog title.
+                    </div>
+                </div>
 
-<form asp-controller="Admin" asp-action="BlogAdd" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="5" placeholder="Enter blog description" required></textarea>
+                    <div class="invalid-feedback">
+                        Please provide a blog description.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="picture" class="form-label fw-bold">Upload Picture</label>
+                    <input type="file" name="picture" class="form-control" accept="image/*" required />
+                    <div class="invalid-feedback">
+                        Please upload a picture.
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg shadow-sm">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label for="picture">Upload Picture</label>
-        <input type="file" name="picture" class="form-control-file" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Enable Bootstrap 5 validation styles
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
 }
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+</style>
