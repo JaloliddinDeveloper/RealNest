@@ -1,6 +1,126 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+            .header h1 {
+                font-size: 2.5rem;
+                color: #4CAF50;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+                color: #555;
+                line-height: 1.6;
+                max-width: 800px;
+                margin: 0 auto 20px;
+            }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            .cta-buttons a {
+                padding: 12px 24px;
+                border-radius: 30px;
+                font-size: 1rem;
+                font-weight: 600;
+                text-decoration: none;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                display: inline-block;
+            }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .btn-info {
+            background-color: #ff5722;
+            color: white;
+        }
+
+        .cta-buttons a:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 300px;
+            cursor: pointer;
+        }
+
+            .feature:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+            }
+
+            .feature i {
+                font-size: 48px;
+                color: #4CAF50;
+                margin-bottom: 16px;
+            }
+
+            .feature h3 {
+                font-size: 22px;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .feature p {
+                font-size: 16px;
+                color: #666;
+                line-height: 1.5;
+            }
+    </style>
+</head>
+
+
 <div class="container">
     <div class="header">
         <h1>Xush kelibsiz!</h1>
@@ -13,19 +133,27 @@
     </div>
 
     <div class="features">
+        <!-- Qidiruv vositasi -->
         <div class="feature">
-            <img src="https://img.icons8.com/ios-filled/100/000000/search--v1.png" alt="Qidiruv">
+            <i class="fas fa-search"></i>
             <h3>Qidiruv Vositasi</h3>
             <p>Joylashuv, narx va boshqa filtrlardan foydalangan holda uyingizni toping.</p>
         </div>
+
+        <!-- Sotish va Ijara -->
         <div class="feature">
-            <img src="https://img.icons8.com/ios-filled/100/000000/sell-property.png" alt="Sotish/Ijara">
+            <i class="fas fa-home"></i>
             <h3>Sotish va Ijara</h3>
             <p>Uylarni sotish yoki ijaraga berish uchun oson va tezkor e'lonlar yarating.</p>
         </div>
+
+        <!-- Shaxsiy kabinet -->
         <div class="feature">
-            <img src="https://img.icons8.com/ios-filled/100/000000/user.png" alt="Shaxsiy Kabinet">
+            <i class="fas fa-user-circle"></i>
             <h3>Shaxsiy Kabinet</h3>
             <p>Profilingizni yarating va o'z uylaringizni boshqaring, yangi e'lonlar qo'shing.</p>
         </div>
     </div>
+</div>
+
+       

@@ -45,7 +45,8 @@ namespace RealNest.Web.Controllers
                     Username = model.Username,
                     Email = model.Email,
                 };
-                user.Password = this.passwordHasherUser.HashPassword(user, model.Password);
+                user.Password = 
+                    this.passwordHasherUser.HashPassword(user, model.Password);
 
                 await this.storageBroker.InsertUserAsync(user);
                 return RedirectToAction("Login");

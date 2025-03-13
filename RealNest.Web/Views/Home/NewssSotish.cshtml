@@ -1,16 +1,14 @@
-﻿@model IEnumerable<House>
-
-<h2 class="text-center mt-4">Yangi Sotiladigan Uylar</h2>
+﻿<h2 class="text-center mt-4">🏡 Yangi Sotiladigan Uylar</h2>
 
 <div class="row">
     @foreach (var house in Model)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card house-card">
                 @if (house.Pictures == null || !house.Pictures.Any())
                 {
                     <img src="~/images/converted_image.png" class="card-img-top house-image" alt="No image available">
-                    <p>No pictures available for this house.</p>
+                    <p class="text-center text-muted mt-2">No pictures available for this house.</p>
                 }
                 else
                 {
@@ -20,23 +18,112 @@
 
                 <div class="card-body">
                     <h5 class="card-title">@house.Title</h5>
-                    <p class="card-text">@house.Description</p>
-                    <p class="card-text"><strong>Narx:</strong> $@house.Price</p>
-                    <p class="card-text"><strong>Manzil:</strong> @house.Address</p>
-                    <p class="card-text"><strong>Joylashuv:</strong> @house.Location</p>
-                    <p class="card-text"><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
-                    <p class="card-text"><strong>ListingType:</strong> @house.ListingType</p>
-                    <p class="card-text"><strong>Contact:</strong> @house.ContactInformation</p>
-                    <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-primary">Batafsil</a>
+                    <p class="card-text description">@house.Description</p>
+                    <div class="details">
+                        <p><strong>Narx:</strong> $@house.Price</p>
+                        <p><strong>Manzil:</strong> @house.Address</p>
+                        <p><strong>Joylashuv:</strong> @house.Location</p>
+                        <p><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
+                        <p><strong>Listing turi:</strong> @house.ListingType</p>
+                        <p><strong>Kontakt:</strong> @house.ContactInformation</p>
+                    </div>
+                    <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-gradient">Batafsil</a>
                 </div>
             </div>
         </div>
     }
 </div>
+
 <style>
+    /* Global settings */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4CAF50;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    /* Card settings */
+    .house-card {
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+    }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+    /* House image */
     .house-image {
         width: 100%;
-        height: 200px;
+        height: 250px;
         object-fit: cover;
+        transition: transform 0.3s ease;
     }
+
+        .house-image:hover {
+            transform: scale(1.05);
+        }
+
+    /* Card body */
+    .card-body {
+        padding: 24px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #212121;
+        margin-bottom: 12px;
+        text-transform: capitalize;
+    }
+
+    .description {
+        font-size: 1rem;
+        color: #757575;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .details p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    /* Gradient button */
+    .btn-gradient {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #4CAF50, #2196F3);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border: none;
+        text-align: center;
+        margin-top: 12px;
+        width: 100%;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #43A047, #1976D2);
+            transform: scale(1.05);
+        }
 </style>

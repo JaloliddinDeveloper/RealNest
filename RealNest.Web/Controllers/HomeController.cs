@@ -53,7 +53,7 @@ namespace RealNest.Web.Controllers
 
             if (house == null || !house.IsValable)
             {
-                return NotFound(); // Uy topilmasa yoki yaroqsiz bo'lsa, xato qaytariladi
+                return NotFound(); 
             }
 
             return View(house);

@@ -21,16 +21,18 @@ namespace RealNest.Web.Brokers.Storages
             this.configuration = configuration;
             this.Database.Migrate();
         }
-        protected override void OnConfiguring(
-            DbContextOptionsBuilder optionsBuilder)
+      
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
-            string connectionString = this.configuration
-                .GetConnectionString(name: "DefaultConnection");
+            string connection =
+                this.configuration.GetConnectionString("DefaultConnection");
 
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseMySql(connection,
+                ServerVersion.AutoDetect(connection));
         }
+
         private async ValueTask<T> InsertAsync<T>(T @object)
         {
             this.Entry(@object).State = EntityState.Added;
