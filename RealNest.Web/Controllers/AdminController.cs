@@ -100,12 +100,12 @@ namespace RealNest.Web.Controllers
                     await picture.CopyToAsync(fileStream);
                 }
 
-                blog.NewsPicture = $"Imagess/{fileName}";
+                blog.NewsPicture = $"imagess/{fileName}";
                 blog.CreatedDate= DateTime.Now;
             }
 
            await this.storageBroker.InsertNewsAsync(blog);
-            return RedirectToAction("BlogAdmin");
+            return RedirectToAction("");
         }
 
         public async ValueTask<IActionResult> BlogEdit(int id)
@@ -138,7 +138,7 @@ namespace RealNest.Web.Controllers
                         await NewPicture.CopyToAsync(stream);
                     }
 
-                    news.NewsPicture = $"Imagess/{newFileName}";
+                    news.NewsPicture = $"imagess/{newFileName}";
 
                 }
                 await this.storageBroker.UpdateNewsAsync(news);

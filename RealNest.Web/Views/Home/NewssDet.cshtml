@@ -5,21 +5,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@Model.Title - Details</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>@Model.Title - Batafsil</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .news-container {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+
+            .news-container:hover {
+                transform: translateY(-5px);
+            }
+
+        .news-image {
+            width: auto; /* Rasmning eni konteynerga moslashadi */
+            height: auto; /* Balandlik avtomatik bo‘ladi */
+            max-height: 500px; /* Maksimal balandlikni belgilash */
+            object-fit: cover; /* Rasmni shakli buzilmasdan joylashtirish */
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+            .news-image:hover {
+                transform: scale(1.05); /* Hover effekti */
+            }
+
+        h1 {
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        h4 {
+            color: #555;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 6px;
+            display: inline-block;
+            font-size: 24px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
+            .btn-back:hover {
+                background-color: #0056b3;
+                color: white;
+                box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+            }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">@Model.Title</h1>
-        <img src="~/@Model.NewsPicture" alt="@Model.Title" class="img-fluid rounded mb-4" />
 
-        <h4>Content</h4>
-        <p>@Model.Description</p>
+    <div class="container">
+        <div class="news-container">
+            <h1>@Model.Title</h1>
+            <img src="~/@Model.NewsPicture" alt="@Model.Title" class="news-image" />
+            <p>@Model.Description</p>
 
-        <a href="@Url.Action("Newss", "Home")" class="btn btn-secondary mt-3">Orqaga</a>
+            <a href="@Url.Action("Newss", "Home")" class="btn-back">⬅️ Orqaga</a>
+        </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
