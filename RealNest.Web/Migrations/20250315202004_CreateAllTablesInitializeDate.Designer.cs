@@ -12,8 +12,8 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20250313160517_CreateAllTablesInitialize")]
-    partial class CreateAllTablesInitialize
+    [Migration("20250315202004_CreateAllTablesInitializeDate")]
+    partial class CreateAllTablesInitializeDate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,13 +58,13 @@ namespace RealNest.Web.Migrations
                     b.Property<string>("ContactInformation")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("ExpirationDate")
+                    b.Property<DateTimeOffset>("ExpirationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsValable")

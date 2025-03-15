@@ -59,8 +59,8 @@ namespace RealNest.Web.Controllers
                         SquareFootage = model.SquareFootage,
                         ListingType = model.ListingType,
                         ContactInformation = model.ContactInformation,
-                        CreatedDate = DateTime.Now,
-                        ExpirationDate = DateTime.Today.AddHours(12),
+                        CreatedDate = DateTimeOffset.Now,
+                        ExpirationDate = DateTimeOffset.Now.AddHours(12),
                         UserId = userId
                     };
                     await this.storageBroker.InsertHouseAsync(house);
@@ -171,7 +171,7 @@ namespace RealNest.Web.Controllers
                         existingHouse.Location = house.Location;
                         existingHouse.SquareFootage = house.SquareFootage;
                         existingHouse.ListingType = house.ListingType;
-                        existingHouse.ExpirationDate = DateTime.Now.AddHours(12);
+                        existingHouse.ExpirationDate = DateTimeOffset.Now.AddHours(12);
                         await storageBroker.UpdateHouseAsync(existingHouse);
                         return RedirectToAction("HouseList");
                     }
