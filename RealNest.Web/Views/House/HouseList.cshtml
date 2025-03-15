@@ -25,10 +25,10 @@
                 <tr>
                     <td>@house.Title</td>
                     <td>@house.Description</td>
-                    <td>@house.Price</td>
+                    <td>@($"${house.Price:F2}")</td>
                     <td>@house.Address</td>
                     <td>@house.Location</td>
-                    <td>@house.SquareFootage</td>
+                    <td>@($"{house.SquareFootage} m²")</td>
                     <td>@house.ListingType</td>
                     <td>@house.ContactInformation</td>
                     <td>

@@ -21,8 +21,8 @@ namespace RealNest.Web.Models.Foundations.Houses
         public double SquareFootage { get; set; }
         public ListingType ListingType { get; set; }
         public string ContactInformation { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ExpirationDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset ExpirationDate { get; set; }
         public Guid UserId { get; set; }
         public bool IsValable { get; set; }
         [JsonIgnore]

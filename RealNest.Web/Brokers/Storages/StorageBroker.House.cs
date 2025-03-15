@@ -81,7 +81,7 @@ namespace RealNest.Web.Brokers.Storages
         {
             return await this.Houses
                 .Include(h => h.Pictures)             
-                .Where(h => h.ExpirationDate > DateTime.Now) 
+                .Where(h => h.ExpirationDate > DateTimeOffset.Now) 
                 .ToListAsync();
         }
 
@@ -92,7 +92,7 @@ namespace RealNest.Web.Brokers.Storages
         {
             return await this.Houses
                 .Include(h => h.Pictures) // Include related pictures
-                .Where(h => h.ExpirationDate <= DateTime.Now && h.ListingType == ListingType.IjaragaBerish) // Filter by expiration and ListingType IjaragaBerish
+                .Where(h => h.ExpirationDate >= DateTimeOffset.Now && h.ListingType == ListingType.IjaragaBerish) // Filter by expiration and ListingType IjaragaBerish
                 .ToListAsync(); // Convert the result to a list
         }
 
@@ -100,9 +100,9 @@ namespace RealNest.Web.Brokers.Storages
         public async Task<List<House>> GetExpiredHousesSotishWithPicturesAsync()
         {
             return await this.Houses
-                .Include(h => h.Pictures) // Include related pictures
-                .Where(h => h.ExpirationDate <= DateTime.Now && h.ListingType == ListingType.Sotish) // Filter by expiration and ListingType IjaragaBerish
-                .ToListAsync(); // Convert the result to a list
+                .Include(h => h.Pictures)
+                .Where(h => h.ListingType == ListingType.Sotish && h.ExpirationDate >= DateTimeOffset.Now)
+                .ToListAsync();
         }
 
     }
