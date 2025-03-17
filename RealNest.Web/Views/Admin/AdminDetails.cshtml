@@ -2,8 +2,16 @@
 
 <h2 class="text-center mt-4">Uy Ma'lumotlari</h2>
 
-<div class="card shadow-lg mt-4 mx-auto" style="max-width: 900px;">
-    @if (Model.Pictures == null || !Model.Pictures.Any())
+<div class="card house-card mt-4 mx-auto">
+    @if (!string.IsNullOrEmpty(Model.VideoUrl) && Model.Pictures != null && Model.Pictures.Any())
+    {
+        var firstPicture = Model.Pictures.First();
+        <video controls width="100%" height="auto" poster="@Url.Content("~" + firstPicture.ImageUrl)" class="card-img-top house-video">
+            <source src="@Model.VideoUrl" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    }
+    else if (Model.Pictures == null || !Model.Pictures.Any())
     {
         <img src="~/images/converted_image.png" class="card-img-top house-image" alt="No image available">
         <p class="text-center text-muted mt-2">No pictures available for this house.</p>
@@ -16,35 +24,58 @@
 
     <div class="card-body">
         <h4 class="card-title">@Model.Title</h4>
-        <p class="card-text text-muted">@Model.Description</p>
+        <p class="card-text description">@Model.Description</p>
 
-        <div class="row mb-3">
+        <div class="row info-section">
             <div class="col-md-6">
-                <p class="card-text"><strong>Narx:</strong> $@Model.Price.ToString("F2")</p>
+                <p class="card-text"><strong>Narx:</strong> @($"${Model.Price:F2}")</p>
                 <p class="card-text"><strong>Manzil:</strong> @Model.Address</p>
                 <p class="card-text"><strong>Joylashuv:</strong> @Model.Location</p>
             </div>
             <div class="col-md-6">
                 <p class="card-text"><strong>Maydoni:</strong> @Model.SquareFootage kv.m</p>
                 <p class="card-text"><strong>Listing turi:</strong> @Model.ListingType</p>
-                <p class="card-text"><strong>Kontakt ma'lumotlari:</strong> @Model.ContactInformation</p>
+                <p class="card-text"><strong>Kontakt:</strong> @Model.ContactInformation</p>
             </div>
         </div>
 
-        <a asp-action="AdminHouseImages" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-info btn-block mt-3">Rasmlarni Ko'rish</a>
+        <a asp-action="AdminHouseImages" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-gradient">Rasmlarni Ko'rish</a>
     </div>
 </div>
 
 <style>
-    .house-image {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
     }
 
-    .card {
-        border-radius: 15px;
+    .house-card {
+        background: #ffffff;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         overflow: hidden;
+        transition: transform 0.3s ease;
+        max-width: 600px;
+    }
+
+        .house-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .house-video,
+    .house-image {
+        width: auto;
+        height: auto;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+    }
+
+    .house-image {
+        object-fit: cover;
+        height: 250px;
     }
 
     .card-body {
@@ -52,17 +83,53 @@
     }
 
     .card-title {
-        font-size: 1.5rem;
-        font-weight: bold;
+        font-size: 24px;
+        font-weight: 600;
         color: #333;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* Info section */
+    .info-section {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
     }
 
     .card-text {
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 8px;
     }
 
-    .btn-block {
+    /* Button styles */
+    .btn-gradient {
+        display: inline-block;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 10px rgba(98, 0, 238, 0.2);
+        text-align: center;
         width: 100%;
+        margin-top: 16px;
+        border: none;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            transform: translateY(-2px);
+        }
+
     }
 </style>

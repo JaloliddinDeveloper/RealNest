@@ -88,8 +88,10 @@ namespace RealNest.Web.Migrations
                     ListingType = table.Column<int>(type: "int", nullable: false),
                     ContactInformation = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ExpirationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    VideoUrl = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedDate = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false),
+                    ExpirationDate = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     IsValable = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },

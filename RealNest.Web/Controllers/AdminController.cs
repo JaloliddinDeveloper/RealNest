@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿//--------------------------------------------------
+// Copyright (c) Coalition Of Good-Hearted Engineers
+// Free To Use To Find Comfort And Peace
+//--------------------------------------------------
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealNest.Web.Brokers.Storages;
@@ -105,7 +109,7 @@ namespace RealNest.Web.Controllers
             }
 
            await this.storageBroker.InsertNewsAsync(blog);
-            return RedirectToAction("");
+            return RedirectToAction("BlogAdmin");
         }
 
         public async ValueTask<IActionResult> BlogEdit(int id)

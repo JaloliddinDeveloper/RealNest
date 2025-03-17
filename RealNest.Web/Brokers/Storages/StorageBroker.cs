@@ -19,7 +19,7 @@ namespace RealNest.Web.Brokers.Storages
         public StorageBroker(IConfiguration configuration)
         {
             this.configuration = configuration;
-            this.Database.Migrate();
+            Database.Migrate(); 
         }
       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

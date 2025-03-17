@@ -20,6 +20,7 @@ namespace RealNest.Web.Models.ViewModels
         public double SquareFootage { get; set; }
         public ListingType ListingType { get; set; }
         public string ContactInformation { get; set; }
+        public string VideoUrl { get; set; }
         public List<IFormFile> HouseImages { get; set; }
     }
 }
