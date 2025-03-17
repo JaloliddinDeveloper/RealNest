@@ -5,6 +5,7 @@
 using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Models.Foundations.Pictures;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,5 +29,13 @@ namespace RealNest.Web.Brokers.Storages
       
         public async ValueTask<Picture> DeletePictureAsync(Picture picture)=>
             await DeleteAsync(picture);
+
+        public async ValueTask<List<Picture>> SelectPicturesByHouseIdAsync(int houseId)
+        {
+            return await this.Pictures
+                .Where(p => p.HouseId == houseId)
+                .ToListAsync();
+        }
+
     }
 }
