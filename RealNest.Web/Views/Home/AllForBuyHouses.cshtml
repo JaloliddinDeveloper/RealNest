@@ -5,12 +5,12 @@
 <div class="row">
     @foreach (var house in Model)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card house-card">
                 @if (house.Pictures == null || !house.Pictures.Any())
                 {
                     <img src="~/images/converted_image.png" class="card-img-top house-image" alt="No image available">
-                    <p>No pictures available for this house.</p>
+                    <p class="text-center text-muted mt-2">No pictures available for this house.</p>
                 }
                 else
                 {
@@ -20,119 +20,122 @@
 
                 <div class="card-body">
                     <h5 class="card-title">@house.Title</h5>
-                    <p class="card-text">@house.Description</p>
-                    <p class="card-text"><strong>Narx:</strong> $@house.Price.ToString("F2")</p>
-                    <p class="card-text"><strong>Manzil:</strong> @house.Address</p>
-                    <p class="card-text"><strong>Joylashuv:</strong> @house.Location</p>
-                    <p class="card-text"><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
-                    <p class="card-text"><strong>ListingType:</strong> @house.ListingType</p>
-                    <p class="card-text"><strong>Contact:</strong> @house.ContactInformation</p>
-                    <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-primary">Batafsil</a>
+                    <p class="card-text description">@house.Description</p>
+                    <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-gradient">Batafsil</a>
                 </div>
             </div>
         </div>
     }
 </div>
 <style>
+
+    /* General styling */
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #f9fafc;
+        background-color: #f9f9f9;
         color: #333;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
     }
 
     h2 {
-        font-size: 2.5rem;
-        color: #4CAF50;
-        margin-bottom: 30px;
+        font-size: 2rem;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
+        color: #333;
+        margin-bottom: 40px; /* 40px bottom margin */
     }
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    /* 🏡 House Card Style */
-    .card {
-        background-color: #ffffff;
+    /* Card styling */
+    .house-card {
+        border: none;
         border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        width: 100%;
-        max-width: 360px;
-        display: flex;
-        flex-direction: column;
+        overflow: hidden;
+        background-color: #ffffff;
     }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        .house-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         }
 
-    /* 🖼️ House Image */
+    /* Image styling */
     .house-image {
         width: 100%;
-        height: 220px;
+        height: 250px;
         object-fit: cover;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
     }
 
-    /* 📄 Card Body */
+    /* Card body */
     .card-body {
         padding: 20px;
-        display: flex;
-        flex-direction: column;
     }
 
     .card-title {
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 10px;
+        font-size: 1.4rem;
         font-weight: 600;
+        color: #222;
+        margin-bottom: 10px;
     }
 
-    .card-text {
-        font-size: 1rem;
+    .description {
+        font-size: 0.95rem;
         color: #555;
-        margin-bottom: 8px;
-        line-height: 1.5;
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
-    /* 🔘 Action Button */
-    .btn-primary {
-        padding: 12px 24px;
-        background: linear-gradient(135deg, #4CAF50, #2196F3);
+    /* Gradient button */
+    .btn-gradient {
+        display: inline-block;
+        padding: 10px 18px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
         color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
-        font-size: 16px;
+        font-size: 0.95rem;
         font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        align-self: flex-start;
+        border-radius: 50px;
+        transition: background 0.3s ease;
         text-decoration: none;
+        border: none;
     }
 
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #43A047, #1976D2);
-            transform: scale(1.05);
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
         }
 
-    /* 🏠 No Image Placeholder */
-    .no-image {
-        text-align: center;
-        padding: 16px;
-        color: #888;
-        font-size: 0.9rem;
+    .description {
+        font-size: 0.85rem;
     }
+
+    .btn-gradient {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+
+    .btn-gradient {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 4px 12px rgba(106, 17, 203, 0.4);
+        text-align: center;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(37, 117, 252, 0.5);
+        }
+
+        .btn-gradient:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 8px rgba(37, 117, 252, 0.5);
+        }
 </style>

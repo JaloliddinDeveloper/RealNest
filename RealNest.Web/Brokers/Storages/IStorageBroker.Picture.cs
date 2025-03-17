@@ -4,6 +4,7 @@
 //--------------------------------------------------
 using RealNest.Web.Models.Foundations.Pictures;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,5 +17,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<Picture> SelectPictureByIdAsync(int pictureId);
         ValueTask<Picture> UpdatePictureAsync(Picture picture);
         ValueTask<Picture> DeletePictureAsync(Picture picture);
+        ValueTask<List<Picture>> SelectPicturesByHouseIdAsync(int houseId);
     }
 }
