@@ -12,8 +12,8 @@ using RealNest.Web.Brokers.Storages;
 namespace RealNest.Web.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    [Migration("20250315202004_CreateAllTablesInitializeDate")]
-    partial class CreateAllTablesInitializeDate
+    [Migration("20250317183818_CreateAllTablesInitialize")]
+    partial class CreateAllTablesInitialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,6 +87,9 @@ namespace RealNest.Web.Migrations
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("VideoUrl")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

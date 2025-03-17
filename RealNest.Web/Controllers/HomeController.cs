@@ -7,6 +7,7 @@ using RealNest.Web.Brokers.Storages;
 using RealNest.Web.Models.Foundations.Houses;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,6 +31,28 @@ namespace RealNest.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult StreamVideo(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return BadRequest("Invalid file name.");
+            }
+
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Videos", fileName);
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound("Video not found.");
+            }
+
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            var mimeType = "video/mp4"; // Videoning MIME turi
+
+            return File(fileStream, mimeType, enableRangeProcessing: true);
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> AllForBuyHouses()
         {
             var allHouses = await storageBroker.SelectHouseForBuyWithPicturesAsync();
@@ -51,7 +74,19 @@ namespace RealNest.Web.Controllers
 
             if (house == null || !house.IsValable)
             {
-                return NotFound(); 
+                return NotFound();
+            }
+
+            return View(house);
+        }
+
+        public async Task<IActionResult> ShowVideo(int id)
+        {
+            var house = await storageBroker.SelectHouseWithPictures(id);
+
+            if (house == null || !house.IsValable)
+            {
+                return NotFound();
             }
 
             return View(house);
@@ -63,7 +98,7 @@ namespace RealNest.Web.Controllers
 
             if (house == null || !house.IsValable)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             return View(house);
@@ -119,12 +154,12 @@ namespace RealNest.Web.Controllers
 
         public async ValueTask<IActionResult> NewssDet(int id)
         {
-            var blog =await this.storageBroker.SelectNewsByIdAsync(id);
+            var blog = await this.storageBroker.SelectNewsByIdAsync(id);
             if (blog == null)
             {
                 return NotFound();
             }
-            return View(blog); 
+            return View(blog);
         }
 
 
