@@ -4,77 +4,78 @@
     ViewData["Title"] = "Uy yaratish";
 }
 
-<h2 class="text-center mb-4">Uy yaratish</h2>
-<p><strong>E'lon muddati:</strong> E'lonlar 2 oy davomida faol bo'ladi. Muddat tugagach, yangilash mumkin.</p>
+<h2 class="text-center mb-4">🏠 Uy yaratish</h2>
+<p class="text-center text-muted mb-4">
+    <strong>E'lon muddati:</strong> E'lonlar 2 oy davomida faol bo'ladi. Muddat tugagach, yangilash mumkin.
+</p>
 
-<form asp-action="Create" method="post" enctype="multipart/form-data" class="p-4 border rounded shadow-sm">
-    <div class="form-group mb-3">
-        <label class="control-label">Uy nomi</label>
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="form-container">
+    <div class="form-group">
+        <label>Uy nomi</label>
         <input asp-for="Title" class="form-control" required />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label class="control-label">Uy haqida ma'limot</label>
+    <div class="form-group">
+        <label>Uy haqida ma'lumot</label>
         <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label  class="control-label">Narxi</label>
+    <div class="form-group">
+        <label>Narxi</label>
         <input asp-for="Price" type="number" class="form-control" required />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label  class="control-label">Manzil</label>
+    <div class="form-group">
+        <label>Manzil</label>
         <input asp-for="Address" class="form-control" required />
         <span asp-validation-for="Address" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label class="control-label">Joylashuv</label>
+    <div class="form-group">
+        <label>Joylashuv</label>
         <input asp-for="Location" class="form-control" required />
         <span asp-validation-for="Location" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label class="control-label">Maydoni (m²)</label>
+    <div class="form-group">
+        <label>Maydoni (m²)</label>
         <input asp-for="SquareFootage" type="number" class="form-control" required />
         <span asp-validation-for="SquareFootage" class="text-danger"></span>
     </div>
 
-
-    <div class="form-group mb-3">
-        <label class="control-label">Sotish/Elon berish</label>
+    <div class="form-group">
+        <label>Sotish/Elon berish</label>
         <select asp-for="ListingType" class="form-control" asp-items="Html.GetEnumSelectList<ListingType>()" required>
             <option value="">Iltimos tanlang</option>
         </select>
         <span asp-validation-for="ListingType" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label class="control-label">Telefon Raqamingiz</label>
+    <div class="form-group">
+        <label>Telefon Raqamingiz</label>
         <input asp-for="ContactInformation" class="form-control" required />
         <span asp-validation-for="ContactInformation" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label for="VideoFile">Video Yuklash</label>
+    <div class="form-group">
+        <label>Video Yuklash</label>
         <input asp-for="VideoUrl" type="file" name="VideoFile" accept="video/*" class="form-control" />
         <span asp-validation-for="VideoUrl" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label for="HouseImages">Uy rasmlarini yuklash</label>
+    <div class="form-group">
+        <label>Uy rasmlarini yuklash</label>
         <input type="file" id="HouseImages" name="HouseImages" multiple class="form-control" required />
         <span class="text-muted">Bir yoki bir nechta rasm yuklang (JPG, PNG, GIF)</span>
     </div>
 
-    <button type="button" class="btn btn-secondary mb-3" id="addImageBtn">Rasmlar qo'shish</button>
+    <button type="button" class="btn-secondary" id="addImageBtn">➕ Rasmlar qo'shish</button>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Uy yaratish</button>
+        <button type="submit" class="btn-primary">✅ Uy yaratish</button>
     </div>
 </form>
 
@@ -92,3 +93,115 @@
         });
     </script>
 }
+
+<!-- ✅ Zamonaviy CSS -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 40px auto;
+        transition: transform 0.3s ease;
+    }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 500;
+        color: #444;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+    .btn-primary,
+    .btn-secondary {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: 600;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+        }
+
+    .btn-secondary {
+        background-color: #f4f4f4;
+        color: #333;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+    /* Kichik ekranlar uchun moslashuv */
+    media (max-width: 576px) {
+        h2
+
+    {
+        font-size: 24px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    }
+</style>

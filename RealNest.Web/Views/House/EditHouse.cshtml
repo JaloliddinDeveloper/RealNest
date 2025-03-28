@@ -40,3 +40,149 @@
         <button type="submit" class="btn btn-primary">Saqlash</button>
     </div>
 </form>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 20px auto;
+        box-sizing: border-box;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #34495e;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #dcdcdc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+        background-color: #fafafa;
+        font-size: 16px;
+        color: #2c3e50;
+    }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+    textarea {
+        resize: none;
+    }
+
+    select {
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        margin-top: 10px;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .text-danger {
+        font-size: 14px;
+        color: #e74c3c;
+        margin-top: 5px;
+    }
+
+    /* ✅ Responsive adjustments */
+    media (max-width: 768px) {
+        form
+
+    {
+        padding: 20px;
+        margin: 10px;
+        max-width: 100%; /* Full width on phones */
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    }
+
+    media (max-width: 480px) {
+        h2
+
+    {
+        font-size: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    }
+</style>
