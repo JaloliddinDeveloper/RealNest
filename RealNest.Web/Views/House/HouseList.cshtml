@@ -41,50 +41,151 @@
         </tbody>
     </table>
 </div>
-
 <style>
-    .modern-table {
-        border-collapse: separate;
-        border-spacing: 0;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
     }
 
-    .thead-light {
-        background-color: #f8f9fa;
+    h2 {
+        font-size: 28px;
         font-weight: bold;
-    }
-
-    .modern-table th, .modern-table td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .modern-table tbody tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    .modern-table th {
-        background-color: #343a40;
-        color: white;
-        font-size: 1rem;
-    }
-
-    .btn {
-        transition: all 0.3s ease;
-    }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-    .table-responsive {
-        border-radius: 10px;
-        overflow: hidden;
+        color: #2c3e50;
         margin-bottom: 20px;
     }
 
+    .btn-primary, .btn-info, .btn-warning, .btn-danger {
+        color: #ffffff;
+        font-size: 14px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-info {
+        background-color: #17a2b8;
+        box-shadow: 0 4px 10px rgba(23, 162, 184, 0.2);
+    }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+    .btn-warning {
+        background-color: #f39c12;
+        box-shadow: 0 4px 10px rgba(243, 156, 18, 0.2);
+    }
+
+        .btn-warning:hover {
+            background-color: #e67e22;
+        }
+
+    .btn-danger {
+        background-color: #e74c3c;
+        box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
+    }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .modern-table th, .modern-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .modern-table th {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #7f8c8d;
+        }
+
+        .modern-table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+            .modern-table tbody tr:hover {
+                background-color: #f4f4f4;
+            }
+
+    .table-responsive {
+        overflow-x: auto;
+        margin-top: 20px;
+        border-radius: 12px;
+    }
+
+    /* ✅ Responsive adjustments */
+    media (max-width: 768px) {
+        h2
+
+    {
+        font-size: 24px;
+    }
+
+    .btn-primary, .btn-info, .btn-warning, .btn-danger {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    }
+
+    media (max-width: 480px) {
+        h2
+
+    {
+        font-size: 20px;
+    }
+
+    .btn-primary, .btn-info, .btn-warning, .btn-danger {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    }
 </style>
