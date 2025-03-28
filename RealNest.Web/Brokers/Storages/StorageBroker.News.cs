@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RealNest.Web.Models.Foundations.Newss;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,5 +24,12 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<News> DeleteNewsAsync(News news) =>
             await DeleteAsync(news);
+
+        public async Task<List<News>> SelectAllNewssAsyncOrderBy()
+        {
+            return await this.Newss
+                        .OrderByDescending(h => h.CreatedDate)
+                            .ToListAsync();
+        }
     }
 }

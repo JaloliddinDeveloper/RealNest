@@ -29,6 +29,7 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<House> DeleteHouseAsync(House house) =>
           await DeleteAsync(house);
+
         public async ValueTask<IQueryable<House>> SelectHousesByUserIdAsync(Guid userId)
         {
             IQueryable<House> userHouses = await SelectAllAsync<House>();
@@ -39,29 +40,33 @@ namespace RealNest.Web.Brokers.Storages
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .FirstOrDefaultAsync(h => h.Id == houseId);
+                    .FirstOrDefaultAsync(h => h.Id == houseId);
         }
+
         public async Task<List<House>> SelectHousesWithPicturesAsync()
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .ToListAsync();
+                    .OrderByDescending(h => h.CreatedDate)
+                        .ToListAsync();
         }
 
         public async Task<List<House>> SelectHouseForBuyWithPicturesAsync()
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => h.ListingType == ListingType.Sotish) 
-                .ToListAsync();
+                    .Where(h => h.ListingType == ListingType.Sotish)
+                        .OrderByDescending(h => h.CreatedDate)
+                            .ToListAsync();
         }
 
         public async Task<List<House>> SelectHouseForRentWithPicturesAsync()
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => h.ListingType == ListingType.IjaragaBerish)
-                .ToListAsync();
+                    .Where(h => h.ListingType == ListingType.IjaragaBerish)
+                      .OrderByDescending(h => h.CreatedDate)
+                        .ToListAsync();
         }
 
         public async Task<List<House>> SearchHousesAsync(string searchInput)
@@ -70,40 +75,40 @@ namespace RealNest.Web.Brokers.Storages
 
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => EF.Functions.Like(h.Title, searchPattern) ||
-                            EF.Functions.Like(h.Description, searchPattern) ||
-                            EF.Functions.Like(h.Address, searchPattern) ||
-                            EF.Functions.Like(h.Location, searchPattern))
-                .ToListAsync();
+                    .Where(h => EF.Functions.Like(h.Title, searchPattern) ||
+                        EF.Functions.Like(h.Description, searchPattern) ||
+                        EF.Functions.Like(h.Address, searchPattern) ||
+                        EF.Functions.Like(h.Location, searchPattern))
+                            .ToListAsync();
         }
 
         public async Task<List<House>> SelectNewHousesWithPicturesAsync()
         {
             return await this.Houses
-                .Include(h => h.Pictures)             
-                .Where(h => h.ExpirationDate > DateTimeOffset.Now) 
-                .ToListAsync();
+                .Include(h => h.Pictures)
+                    .Where(h => h.ExpirationDate > DateTimeOffset.Now)
+                      .OrderByDescending(h => h.CreatedDate)
+                        .ToListAsync();
         }
-
-
-
 
         public async Task<List<House>> GetExpiredHousesIjaragaBerishWithPicturesAsync()
         {
             return await this.Houses
-                .Include(h => h.Pictures) // Include related pictures
-                .Where(h => h.ExpirationDate >= DateTimeOffset.Now && h.ListingType == ListingType.IjaragaBerish) // Filter by expiration and ListingType IjaragaBerish
-                .ToListAsync(); // Convert the result to a list
+                .Include(h => h.Pictures) 
+                    .Where(h => h.ExpirationDate >= DateTimeOffset.Now 
+                        && h.ListingType == ListingType.IjaragaBerish)
+                        .OrderByDescending(h => h.CreatedDate)
+                            .ToListAsync(); 
         }
-
 
         public async Task<List<House>> GetExpiredHousesSotishWithPicturesAsync()
         {
             return await this.Houses
                 .Include(h => h.Pictures)
-                .Where(h => h.ListingType == ListingType.Sotish && h.ExpirationDate >= DateTimeOffset.Now)
-                .ToListAsync();
+                    .Where(h => h.ListingType == ListingType.Sotish 
+                        && h.ExpirationDate >= DateTimeOffset.Now)
+                         .OrderByDescending(h => h.CreatedDate)
+                            .ToListAsync();
         }
-
     }
 }
