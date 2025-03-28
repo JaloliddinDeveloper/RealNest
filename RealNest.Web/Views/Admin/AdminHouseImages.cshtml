@@ -156,7 +156,6 @@ else
         showImage(currentImageIndex);
     }
 
-    // Allow keyboard navigation
     document.addEventListener('keydown', function(event) {
         if (event.key === 'ArrowRight') {
             changeImage(1);
@@ -167,7 +166,6 @@ else
         }
     });
 
-    // Close modal if clicked outside of the image
     window.onclick = function(event) {
         const modal = document.getElementById("imageModal");
         if (event.target === modal) {
