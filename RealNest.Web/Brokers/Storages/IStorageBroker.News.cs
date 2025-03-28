@@ -1,4 +1,5 @@
 ﻿using RealNest.Web.Models.Foundations.Newss;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,5 +12,6 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<News> SelectNewsByIdAsync(int NewsId);
         ValueTask<News> UpdateNewsAsync(News News);
         ValueTask<News> DeleteNewsAsync(News News);
+        Task<List<News>> SelectAllNewssAsyncOrderBy();
     }
 }

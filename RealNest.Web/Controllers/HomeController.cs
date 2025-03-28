@@ -46,7 +46,7 @@ namespace RealNest.Web.Controllers
             }
 
             var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            var mimeType = "video/mp4"; // Videoning MIME turi
+            var mimeType = "video/mp4";
 
             return File(fileStream, mimeType, enableRangeProcessing: true);
         }
@@ -131,7 +131,6 @@ namespace RealNest.Web.Controllers
             }
             catch (Exception ex)
             {
-                // Xatolikni log fayliga yozish yoki boshqarish
                 ViewBag.ErrorMessage = "Qidiruv jarayonida xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.";
                 return View(new List<House>());
             }
@@ -147,10 +146,9 @@ namespace RealNest.Web.Controllers
         [HttpGet]
         public async ValueTask<IActionResult> Newss()
         {
-            var newss = await this.storageBroker.SelectAllNewssAsync();
+            var newss = await this.storageBroker.SelectAllNewssAsyncOrderBy();
             return View(newss);
         }
-
 
         public async ValueTask<IActionResult> NewssDet(int id)
         {
@@ -161,7 +159,6 @@ namespace RealNest.Web.Controllers
             }
             return View(blog);
         }
-
 
         [HttpGet]
         public async ValueTask<IActionResult> NewssSotish()
