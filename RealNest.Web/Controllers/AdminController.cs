@@ -36,8 +36,14 @@ namespace RealNest.Web.Controllers
         public async ValueTask<IActionResult> MainAdmin()
         {
             IQueryable<House> allHouses = await storageBroker.SelectAllHousesAsync();
+
+            int totalHouses = allHouses.Count();
+
+            ViewBag.TotalHouses = totalHouses;
+
             return View(allHouses.ToList());
         }
+
 
         [HttpPost]
         public async Task<IActionResult> MarkAsValable(int id)

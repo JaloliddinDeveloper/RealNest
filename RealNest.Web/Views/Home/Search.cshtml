@@ -31,14 +31,14 @@ else
                     <div class="card-body">
                         <h5 class="card-title">@house.Title</h5>
                         <p class="card-text description">@house.Description</p>
-                        <div class="details">
+                       @*  <div class="details">
                             <p><strong>Narx:</strong> $@house.Price.ToString("F2")</p>
                             <p><strong>Manzil:</strong> @house.Address</p>
                             <p><strong>Joylashuv:</strong> @house.Location</p>
                             <p><strong>Maydoni:</strong> @house.SquareFootage kv.m</p>
                             <p><strong>Listing turi:</strong> @house.ListingType</p>
                             <p><strong>Kontakt:</strong> @house.ContactInformation</p>
-                        </div>
+                        </div> *@
                         <a asp-action="Details" asp-controller="Home" asp-route-id="@house.Id" class="btn btn-gradient">Batafsil</a>
                     </div>
                 </div>
