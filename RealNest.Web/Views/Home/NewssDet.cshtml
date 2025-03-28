@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@Model.Title  Batafsil</title>
+    <title>@Model.Title Batafsil</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -17,11 +17,11 @@
 
         .news-container {
             background-color: #ffffff;
-            padding: 10px;
+            padding: 20px;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             margin-top: 40px;
-            max-width: auto;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             transition: transform 0.3s ease;
@@ -32,23 +32,25 @@
             }
 
         .news-image {
-            width: auto; /* Rasmning eni konteynerga moslashadi */
-            height: auto; /* Balandlik avtomatik bo‘ladi */
-            max-height: auto; /* Maksimal balandlikni belgilash */
-            object-fit: cover; /* Rasmni shakli buzilmasdan joylashtirish */
+            width: 100%; /* Kichik ekranlarda kenglikni moslashtirish */
+            height: auto;
+            max-height: 400px; /* Maksimal balandlik */
+            object-fit: cover; /* Rasmning shaklini saqlash */
             border-radius: 12px;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
             .news-image:hover {
-                transform: scale(1.05); /* Hover effekti */
+                transform: scale(1.05);
             }
 
         h1 {
             color: #1a1a1a;
             font-weight: 700;
             font-size: 32px;
+            margin-bottom: 12px;
+            text-align: center;
         }
 
         h4 {
@@ -64,6 +66,7 @@
             line-height: 1.8;
             font-size: 18px;
             color: #444;
+            text-align: justify;
         }
 
         .btn-back {
@@ -84,6 +87,36 @@
                 color: white;
                 box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
             }
+
+        media (max-width: 576px) {
+            .news-container
+
+        {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 24px; /* Sarlavha kichraytirildi */
+        }
+
+        h4 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px; /* Matn o'lchami kichraytirildi */
+        }
+
+        .news-image {
+            max-height: 250px; /* Kichik ekranlarda rasm balandligi kichraytirildi */
+        }
+
+        .btn-back {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        }
     </style>
 </head>
 <body>
