@@ -24,12 +24,5 @@ namespace RealNest.Web.Brokers.Storages
 
         public async ValueTask<News> DeleteNewsAsync(News news) =>
             await DeleteAsync(news);
-
-        public async Task<List<News>> SelectAllNewssAsyncOrderBy()
-        {
-            return await this.Newss
-                        .OrderByDescending(h => h.CreatedDate)
-                            .ToListAsync();
-        }
     }
 }
