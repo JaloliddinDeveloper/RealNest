@@ -12,6 +12,5 @@ namespace RealNest.Web.Brokers.Storages
         ValueTask<News> SelectNewsByIdAsync(int NewsId);
         ValueTask<News> UpdateNewsAsync(News News);
         ValueTask<News> DeleteNewsAsync(News News);
-        Task<List<News>> SelectAllNewssAsyncOrderBy();
     }
 }

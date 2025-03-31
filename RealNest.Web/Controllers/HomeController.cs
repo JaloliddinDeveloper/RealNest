@@ -146,7 +146,7 @@ namespace RealNest.Web.Controllers
         [HttpGet]
         public async ValueTask<IActionResult> Newss()
         {
-            var newss = await this.storageBroker.SelectAllNewssAsyncOrderBy();
+            var newss = await this.storageBroker.SelectAllNewssAsync();
             return View(newss);
         }
 
