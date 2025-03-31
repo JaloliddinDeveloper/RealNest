@@ -1,104 +1,4 @@
 ﻿@model IQueryable<News>
-<style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #f9fafc;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    h1.hh {
-        font-size: 2.5rem;
-        color: #4CAF50;
-        margin-bottom: 30px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    /* 🔥 Blog Card Styles */
-    .blog-card {
-        background-color: #ffffff;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        max-width: 360px;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-        .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-    /* 🖼️ Image */
-    .blog-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-
-    /* 📄 Content */
-    .blog-content {
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .blog-title {
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    .blog-text {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 15px;
-        line-height: 1.6;
-    }
-
-    /* 🔘 Action Button */
-    .action-btn {
-        padding: 12px 24px;
-        background: linear-gradient(135deg, #4CAF50, #2196F3);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        align-self: flex-start;
-        text-decoration: none;
-    }
-
-        .action-btn:hover {
-            background: linear-gradient(135deg, #43A047, #1976D2);
-            transform: scale(1.05);
-        }
-</style>
 
 <h1 class="hh" style="text-align: center;">Yangiliklar</h1>
 
@@ -120,3 +20,66 @@
         }
     </div>
 </div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .blog-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: calc(33.333% - 20px); /* 3 ta ustunda bo'lishi uchun */
+    }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+    .blog-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 5px solid #007bff;
+    }
+
+    .blog-content {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .blog-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .action-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+
+        .action-btn:hover {
+            background: #0056b3;
+        }
+
+</style>
