@@ -1,85 +1,90 @@
 ﻿@model IQueryable<News>
 
-<h1 class="hh" style="text-align: center;">Yangiliklar</h1>
+<h1 class="news-title">Yangiliklar</h1>
 
-<div class="container mt-4">
-
-    <div class="row">
-        @foreach (var blog in Model)
-        {
-            <div class="col-md-4">
-                <div class="blog-card">
-                    <img src="~/@blog.NewsPicture" alt="Blog Image" class="blog-image">
-                    <div class="blog-content">
-                        <h2 class="blog-title">@blog.Title</h2>
-                      @*   <p class="blog-text">@blog.Description</p> *@
-                        <a href="@Url.Action("NewssDet", "Home", new { id = blog.Id })" class="action-btn">Batafsil</a>
-                    </div>
-                </div>
+<div class="news-container">
+    @foreach (var blog in Model)
+    {
+        <div class="news-card">
+            <img src="~/@blog.NewsPicture" alt="Yangilik rasmi" class="news-image" />
+            <div class="news-content">
+                <h2 class="news-heading">@blog.Title</h2>
+                <a href="@Url.Action("NewssDet", "Home", new { id = blog.Id })" class="news-button">Batafsil</a>
             </div>
-        }
-    </div>
+        </div>
+    }
 </div>
-
 <style>
-    .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 10px;
-}
+    /* Sarlavha */
+    .news-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 30px;
+        color: #2c3e50;
+    }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+    /* Card konteyneri */
+    .news-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+    }
 
-.blog-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: calc(29% - 20px); /* 3 ta ustunda bo'lishi uchun */
-}
+    /* Har bir card */
+    .news-card {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
 
-.blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-}
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
 
-.blog-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 5px solid #007bff;
-}
+    /* Rasm */
+    .news-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 
-.blog-content {
-    padding: 15px;
-    text-align: center;
-}
+    /* Card matni */
+    .news-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
 
-.blog-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
+    /* Sarlavha */
+    .news-heading {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 15px;
+    }
 
-.action-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.3s ease;
-}
+    /* Tugma */
+    .news-button {
+        text-decoration: none;
+        background-color: #3498db;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
 
-.action-btn:hover {
-    background: #0056b3;
-}
+        .news-button:hover {
+            background-color: #2980b9;
+        }
 
 </style>
