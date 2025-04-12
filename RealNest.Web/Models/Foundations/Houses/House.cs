@@ -6,7 +6,6 @@ using RealNest.Web.Models.Foundations.Pictures;
 using RealNest.Web.Models.Foundations.Users;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace RealNest.Web.Models.Foundations.Houses
 {
@@ -26,7 +25,7 @@ namespace RealNest.Web.Models.Foundations.Houses
         public DateTimeOffset ExpirationDate { get; set; }
         public Guid UserId { get; set; }
         public bool IsValable { get; set; }
-        [JsonIgnore]
+
         public User User { get; set; }
         public IEnumerable<Picture> Pictures { get; set; }
     }

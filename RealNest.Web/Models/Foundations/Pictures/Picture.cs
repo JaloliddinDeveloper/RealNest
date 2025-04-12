@@ -13,6 +13,6 @@ namespace RealNest.Web.Models.Foundations.Pictures
         public int Id { get; set; } 
         public string ImageUrl { get; set; } 
         public int HouseId { get; set; }
-        public virtual House House { get; set; } 
+        public House House { get; set; } 
     }
 }
