@@ -29,10 +29,8 @@ namespace RealNest.Web.Brokers.Storages
             string connection =
                 this.configuration.GetConnectionString("DefaultConnection");
 
-            optionsBuilder.UseSqlServer(connection);
-
-            //optionsBuilder.UseMySql(connection,
-            //    ServerVersion.AutoDetect(connection));
+            optionsBuilder.UseMySql(connection,
+                ServerVersion.AutoDetect(connection));
         }
 
         private async ValueTask<T> InsertAsync<T>(T @object)
